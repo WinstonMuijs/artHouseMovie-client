@@ -10,9 +10,9 @@ export class MainView extends React.Component {
         super();
         this.state = {
             movies: [
-                { _id: 1, title: 'The Fountain', description: ' As a modern-day scientist, Tommy is struggling with mortality, desperately searching for the medical breakthrough that will save the life of his cancer-stricken wife, Izzi.', genre: ' Drama', director: ' Darren Aronofski', imageURL: 'https://www.webdesignmuseum.org/uploaded/fullscreen/the-fountain-2006.png', featured: false },
-                { _id: 2, title: 'The Eternal Sunshine of the Spotless Mind', description: ' When their relationship turns sour, a couple undergoes a medical procedure to have each other erased from their memories.', genre: ' Drama', director: ' Michel Goundry', imageURL: 'https://www.themoviedb.org/t/p/w500/a10t6Etv9cHz5pTNl9RyqspbdnY.jpg', featured: true },
-                { _id: 3, title: 'The Tree of Life', description: ' The story of a family in Waco, Texas in 1956. The eldest son witnesses the loss of innocence and struggles with his parents conflicting teachings.', genre: ' Drama', director: ' Terrence Malick', imageURL: 'https://www.themoviedb.org/t/p/w1280/5Zc2JGtIX4CGaVFwrHX72Okuek8.jpg', featured: true }
+                { _id: 1, title: 'The Fountain', description: ' As a modern-day scientist, Tommy is struggling with mortality, desperately searching for the medical breakthrough that will save the life of his cancer-stricken wife, Izzi.', genre: ' Drama', director: ' Darren Aronofski', imageURL: 'https://m.media-amazon.com/images/I/51Ja7PFr9eL.jpg' },
+                { _id: 2, title: 'The Eternal Sunshine of the Spotless Mind', description: ' When their relationship turns sour, a couple undergoes a medical procedure to have each other erased from their memories.', genre: ' Drama', director: ' Michel Goundry', imageURL: 'https://m.media-amazon.com/images/M/MV5BZTg3ODg2MzMtZmRmYy00ZWUwLTk5Y2QtOThmOTY1ZWZjZmJlXkEyXkFqcGdeQXVyODIyOTEyMzY@._V1_.jpg' },
+                { _id: 3, title: 'The Tree of Life', description: ' The story of a family in Waco, Texas in 1956. The eldest son witnesses the loss of innocence and struggles with his parents conflicting teachings.', genre: ' Drama', director: ' Terrence Malick', imageURL:'https://m.media-amazon.com/images/I/717aO-A7McL._AC_SL1500_.jpg'}
 
             ],
             selectedMovie: null
@@ -43,3 +43,4 @@ export class MainView extends React.Component {
     }
     
 }
+
