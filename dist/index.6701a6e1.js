@@ -25264,49 +25264,43 @@ class MainView extends _reactDefault.default.Component {
                 {
                     _id: 1,
                     title: 'The Fountain',
-                    description: 'As a modern-day scientist, Tommy is struggling with mortality, desperately searching for the medical breakthrough that will save the life of his cancer-stricken wife, Izzi.',
-                    genre: 1,
-                    director: 1,
-                    imageURL: 'https://www.imdb.com/title/tt0414993/mediaviewer/rm2671676416/?ref_=tt_ov_i',
-                    featured: false
+                    description: ' As a modern-day scientist, Tommy is struggling with mortality, desperately searching for the medical breakthrough that will save the life of his cancer-stricken wife, Izzi.',
+                    genre: ' Drama',
+                    director: ' Darren Aronofski',
+                    imageURL: 'https://m.media-amazon.com/images/I/51Ja7PFr9eL.jpg'
                 },
                 {
                     _id: 2,
                     title: 'The Eternal Sunshine of the Spotless Mind',
-                    description: 'When their relationship turns sour, a couple undergoes a medical procedure to have each other erased from their memories.',
-                    genre: 1,
-                    director: 2,
-                    imageURL: 'https://www.imdb.com/title/tt0338013/mediaviewer/rm2954530560/?ref_=tt_ov_i',
-                    featured: true
+                    description: ' When their relationship turns sour, a couple undergoes a medical procedure to have each other erased from their memories.',
+                    genre: ' Drama',
+                    director: ' Michel Goundry',
+                    imageURL: 'https://m.media-amazon.com/images/M/MV5BZTg3ODg2MzMtZmRmYy00ZWUwLTk5Y2QtOThmOTY1ZWZjZmJlXkEyXkFqcGdeQXVyODIyOTEyMzY@._V1_.jpg'
                 },
                 {
                     _id: 3,
                     title: 'The Tree of Life',
-                    description: 'he story of a family in Waco, Texas in 1956. The eldest son witnesses the loss of innocence and struggles with his parents conflicting teachings.',
-                    genre: 1,
-                    director: 3,
-                    imageURL: 'https://www.imdb.com/title/tt0478304/mediaviewer/rm4192437504/?ref_=tt_ov_i',
-                    featured: true
+                    description: ' The story of a family in Waco, Texas in 1956. The eldest son witnesses the loss of innocence and struggles with his parents conflicting teachings.',
+                    genre: ' Drama',
+                    director: ' Terrence Malick',
+                    imageURL: 'https://m.media-amazon.com/images/I/717aO-A7McL._AC_SL1500_.jpg'
                 }
             ],
             selectedMovie: null
         };
     }
+    setSelectedMovie(newSelectedMovie) {
+        this.setState({
+            selectedMovie: newSelectedMovie
+        });
+    }
     render() {
         const { movies , selectedMovie  } = this.state;
-        if (selectedMovie) return(/*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
-            movie: selectedMovie,
-            __source: {
-                fileName: "src/components/mainview/main-view.jsx",
-                lineNumber: 23
-            },
-            __self: this
-        }));
         if (movies.length === 0) return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
             className: "main-view",
             __source: {
                 fileName: "src/components/mainview/main-view.jsx",
-                lineNumber: 25
+                lineNumber: 31
             },
             __self: this,
             children: "The list is empty!"
@@ -25315,14 +25309,27 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/mainview/main-view.jsx",
-                lineNumber: 28
+                lineNumber: 34
             },
             __self: this,
-            children: movies.map((movie)=>/*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
+            children: selectedMovie ? /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
+                movie: selectedMovie,
+                onBackClick: (newSelectedMovie)=>{
+                    this.setSelectedMovie(newSelectedMovie);
+                },
+                __source: {
+                    fileName: "src/components/mainview/main-view.jsx",
+                    lineNumber: 36
+                },
+                __self: this
+            }) : movies.map((movie)=>/*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
                     movie: movie,
+                    onMovieClick: (movie1)=>{
+                        this.setSelectedMovie(movie1);
+                    },
                     __source: {
                         fileName: "src/components/mainview/main-view.jsx",
-                        lineNumber: 29
+                        lineNumber: 38
                     },
                     __self: this
                 }, movie._id)
@@ -25336,7 +25343,7 @@ class MainView extends _reactDefault.default.Component {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","../movie-card/movie-card":"6EiBJ","@parcel/transformer-js/src/esmodule-helpers.js":"6gzAh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"lRSmJ","../movie-view/movie-view":"ikZdr"}],"6EiBJ":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","../movie-card/movie-card":"6EiBJ","../movie-view/movie-view":"ikZdr","@parcel/transformer-js/src/esmodule-helpers.js":"6gzAh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"lRSmJ"}],"6EiBJ":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$4249 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -25352,12 +25359,15 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 class MovieCard extends _reactDefault.default.Component {
     render() {
-        const { movie  } = this.props;
+        const { movie , onMovieClick  } = this.props;
         return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
             className: "movie-card",
+            onClick: ()=>{
+                onMovieClick(movie);
+            },
             __source: {
                 fileName: "src/components/movie-card/movie-card.jsx",
-                lineNumber: 6
+                lineNumber: 7
             },
             __self: this,
             children: movie.title
@@ -25538,12 +25548,12 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 class MovieView extends _reactDefault.default.Component {
     render() {
-        const { movie  } = this.props;
+        const { movie , onBackClick  } = this.props;
         return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
             className: "movie-view",
             __source: {
                 fileName: "src/components/movie-view/movie-view.jsx",
-                lineNumber: 8
+                lineNumber: 9
             },
             __self: this,
             children: [
@@ -25551,15 +25561,15 @@ class MovieView extends _reactDefault.default.Component {
                     className: "movie-poster",
                     __source: {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 9
+                        lineNumber: 10
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx("img", {
                         src: movie.imageURL,
-                        crossOrigin: "anonymous",
+                        crossOrigin: 'anonymous',
                         __source: {
                             fileName: "src/components/movie-view/movie-view.jsx",
-                            lineNumber: 10
+                            lineNumber: 11
                         },
                         __self: this
                     })
@@ -25568,7 +25578,7 @@ class MovieView extends _reactDefault.default.Component {
                     className: "movie-title",
                     __source: {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 12
+                        lineNumber: 14
                     },
                     __self: this,
                     children: [
@@ -25576,7 +25586,7 @@ class MovieView extends _reactDefault.default.Component {
                             className: "label",
                             __source: {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 13
+                                lineNumber: 15
                             },
                             __self: this,
                             children: "Title:"
@@ -25585,7 +25595,7 @@ class MovieView extends _reactDefault.default.Component {
                             className: "value",
                             __source: {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 14
+                                lineNumber: 16
                             },
                             __self: this,
                             children: movie.title
@@ -25596,7 +25606,7 @@ class MovieView extends _reactDefault.default.Component {
                     className: "movie-description",
                     __source: {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 16
+                        lineNumber: 18
                     },
                     __self: this,
                     children: [
@@ -25604,21 +25614,88 @@ class MovieView extends _reactDefault.default.Component {
                             className: "label",
                             __source: {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 17
+                                lineNumber: 19
                             },
                             __self: this,
-                            children: "Description"
+                            children: "Description:"
                         }),
                         /*#__PURE__*/ _jsxRuntime.jsx("span", {
                             className: "value",
                             __source: {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 18
+                                lineNumber: 20
                             },
                             __self: this,
                             children: movie.description
                         })
                     ]
+                }),
+                /*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                    className: "movie-genre",
+                    __source: {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 22
+                    },
+                    __self: this,
+                    children: [
+                        /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                            className: "label",
+                            __source: {
+                                fileName: "src/components/movie-view/movie-view.jsx",
+                                lineNumber: 23
+                            },
+                            __self: this,
+                            children: "Genre:"
+                        }),
+                        /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                            className: "value",
+                            __source: {
+                                fileName: "src/components/movie-view/movie-view.jsx",
+                                lineNumber: 24
+                            },
+                            __self: this,
+                            children: movie.genre
+                        })
+                    ]
+                }),
+                /*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                    className: "movie-director",
+                    __source: {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 26
+                    },
+                    __self: this,
+                    children: [
+                        /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                            className: "label",
+                            __source: {
+                                fileName: "src/components/movie-view/movie-view.jsx",
+                                lineNumber: 27
+                            },
+                            __self: this,
+                            children: "Director:"
+                        }),
+                        /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                            className: "value",
+                            __source: {
+                                fileName: "src/components/movie-view/movie-view.jsx",
+                                lineNumber: 28
+                            },
+                            __self: this,
+                            children: movie.director
+                        })
+                    ]
+                }),
+                /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                    onClick: ()=>{
+                        onBackClick(null);
+                    },
+                    __source: {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 30
+                    },
+                    __self: this,
+                    children: "Back"
                 })
             ]
         }));
