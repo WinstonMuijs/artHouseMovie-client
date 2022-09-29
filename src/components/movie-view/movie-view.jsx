@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Container, Row, Col} from 'react-bootstrap';
+import {Container, Row, Col, Button} from 'react-bootstrap';
+
+import './movie-view.scss';
 
 
 
@@ -45,7 +47,7 @@ export class MovieView extends React.Component {
             </Row>
             <Row>
               <Col>
-              <button onClick={() => { onBackClick(null); }}>Back</button>
+              <Button className='btn' onClick={() => { onBackClick(null); }}>Back</Button>
               </Col>
             </Row>
         </Container>

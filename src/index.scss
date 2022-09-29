@@ -1,6 +1,14 @@
+html{
+  background-color: #000;
+}
 
-$color: steelblue;
+.app-container{
+  color:#000;
+  background-color: #000;
+}
 
-.my-flix {
-  color: $color;
+.btn.btn-primary {
+  background-color: deeppink;
+  border:deeppink;
+
 }
