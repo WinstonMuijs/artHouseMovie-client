@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Container, Row, Col} from 'react-bootstrap';
 
 
 
@@ -9,29 +10,45 @@ export class MovieView extends React.Component {
         const { movie, onBackClick } = this.props;
 
         return (
-        <div className="movie-view">
-            <div className='movie-poster'>
+        <Container className="movie-view">
+         <Row>
+         <Col></Col>
+            <Col className='movie-poster'>
                 <img src={movie.imageURL} crossOrigin={'anonymous'}
                 />
-            </div>
-            <div className='movie-title'>
+            </Col>
+            <Col></Col>
+          </Row>
+          <Row>
+            <Col className='movie-title'>
                 <span className='label'>Title:</span>
                 <span className='value'>{movie.title}</span>
-            </div>
-            <div className='movie-description'>
+            </Col>
+          </Row>
+          <Row>
+            <Col className='movie-description'>
                 <span className='label'>Description:</span>
                 <span className='value'>{movie.description}</span>
-            </div>
-            <div className='movie-genre'>
+                </Col> 
+            </Row>
+            <Row>
+              <Col className='movie-genre'>
                 <span className='label'>Genre:</span>
                 <span className='value'>{movie.genre}</span>
-            </div>
-            <div className='movie-director'>
+              </Col>
+            </Row>
+            <Row>
+              <Col className='movie-director'>
                 <span className='label'>Director:</span>
                 <span className='value'>{movie.director}</span>
-            </div>
-            <button onClick={() => { onBackClick(null); }}>Back</button>
-        </div>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+              <button onClick={() => { onBackClick(null); }}>Back</button>
+              </Col>
+            </Row>
+        </Container>
         );
       }
 }
