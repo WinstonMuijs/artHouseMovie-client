@@ -9,12 +9,68 @@ export function RegistrationView(props) {
     const [ password, setPassword ] = useState('');
     const [ email, setEmail] = useState('');
     const [ birthday, setBirthday] = useState('');
+    const[values, setValues] = useState({
+      nameErr:"",
+      passwordErr: "",
+      emailErr: ""
+    });
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(name, password, email, birthday);
-        props.onLoggedIn(name);
-    };
+    const validate = () => {
+      let isReq = true;
+      if (!username) {
+        setValues({ ...values, usernameErr: "Username Required" });
+        isReq = false;
+      } else if (username.length < 5) {
+          setValues({
+          ...values,
+          usernameErr: "Username must be 5 characters long",
+        });
+        isReq = false;
+      }
+      if (!password) {
+        setValues({ ...values, passwordErr: "Password Required" });
+        isReq = false;
+      } else if (password.length < 6) {
+       setValues({
+         ...values,
+          passwordErr: "Password must be 6 characters long",
+        });
+        isReq = false;
+      }
+      if (!email) {
+        setValues({ ...values, emailErr: "Email Required" });
+       isReq = false;
+      } else if (email.indexOf("@") === -1) {
+        setValues({ ...values, emailErr: "Email is invalid" });
+        isReq = false;
+     }
+      return isReq;
+   };
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const isReq = validate();
+    if (isReq) {
+      axios
+        .post("https://arthousmovie.herokuapp.com/users", {
+          name: name,
+          password: password,
+          email: email,
+          birthday: birthday,
+        })
+        .then((response) => {
+          const data = response.data;
+          console.log(data);
+          alert("Registration successful, please login!");
+          window.open("/", "_self"); // the second argument is necessary so that the page will open in the current tab
+        })
+        .catch((response) => {
+          console.error(response);
+          alert("unable to register");
+        });
+    }
+  };
 
     return (
         <Container>
@@ -28,14 +84,17 @@ export function RegistrationView(props) {
                       <FormGroup>
                         <Form.Label>Username:</Form.Label> 
                         <Form.Control type="text" value={name} onChange={e => setUsername(e.target.value)} required placeholder='Enter a username' />
+                        {values.nameErr && < p>{values.nameErr}</p>}
                       </FormGroup>
                      <Form.Group className="mb-3" controlId="formPassword">
                         <Form.Label>Password:</Form.Label>
                         <Form.Control type="password" onChange={e => setPassword(e.target.value)} required minLength="8" placeholder='Please enter a password with 8 or more characters'/>
+                        {values.passwordErr && < p>{values.passwordErr}</p>}
                       </Form.Group>
                       <Form.Group className="mb-3" controlId="formEmail">
                         <Form.Label>Email:</Form.Label>
                        <Form.Control type="email" onChange={e => setEmail(e.target.value)} required placeholder='please enter your email'/>
+                       {values.emailErr && < p>{values.emailErr}</p>}
                      </Form.Group>
                       <Form.Group className="mb-3" controlId="formBirthday">
                         <Form.Label>Birthday:</Form.Label>
