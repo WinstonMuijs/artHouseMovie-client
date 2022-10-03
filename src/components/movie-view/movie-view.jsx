@@ -4,12 +4,12 @@ import {Container, Row, Col, Button} from 'react-bootstrap';
 
 import './movie-view.scss';
 
-
+import {Link} from "react-router-dom";
 
 export class MovieView extends React.Component {
 
     render() {
-        const { movie, onBackClick } = this.props;
+        const { movie, director, onBackClick } = this.props;
 
         return (
         <Container className="movie-view">
@@ -39,12 +39,14 @@ export class MovieView extends React.Component {
                 <span className='value'>{movie.genre}</span>
               </Col>
             </Row>
-            <Row>
-              <Col className='movie-director'>
-                <span className='label'>Director:</span>
-                <span className='value'>{movie.director}</span>
+            {/* <Row>
+              <Col className='movie-genre'>
+                <Link to={`/genres/${movie.genre._id}`}>
+                  <Button variant="link">Genre</Button>
+                </Link>
               </Col>
-            </Row>
+            </Row> */}
+
             <Row>
               <Col>
               <Button className='btn' onClick={() => { onBackClick(null); }}>Back</Button>
