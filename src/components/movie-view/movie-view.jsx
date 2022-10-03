@@ -39,13 +39,13 @@ export class MovieView extends React.Component {
                 <span className='value'>{movie.genre}</span>
               </Col>
             </Row>
-            {/* <Row>
-              <Col className='movie-genre'>
-                <Link to={`/genres/${movie.genre._id}`}>
-                  <Button variant="link">Genre</Button>
+            <Row>
+              <Col className='movie-director'>
+                <Link to={`/directors/${director._id}`}>
+                  <Button variant="link">Director</Button>
                 </Link>
               </Col>
-            </Row> */}
+            </Row>
 
             <Row>
               <Col>
