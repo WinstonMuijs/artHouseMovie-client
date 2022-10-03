@@ -10,6 +10,8 @@ import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { Navbar } from '../navbar/navbar';
+import { DirectorView } from '../director-view/director';
+
 
 
 
@@ -20,7 +22,7 @@ export class MainView extends React.Component {
         super();
         this.state = {
             movies: [],
-            selectedMovie: null,
+            directors: [],
             user: null
         }
     }
@@ -121,10 +123,11 @@ export class MainView extends React.Component {
             </Col>
           }} />
 
-          <Route path="/genres/:genreId" render={({ match }) => {
-            return <Col md={8}>
-              <GenreView movie={movies.find(m => m.genre._id == match.params.genreId)} />
+          <Route exact path="/directors/" render={() => {
+            return directors.map(d => (<Col md={8} key={d._id}>
+              <DirectorView director={d} />
             </Col>
+            ))
           }} />
 
         </Row>
