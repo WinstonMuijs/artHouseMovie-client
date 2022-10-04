@@ -6,6 +6,7 @@ import './movie-view.scss';
 
 import {Link} from "react-router-dom";
 
+
 export class MovieView extends React.Component {
 
     render() {
@@ -41,7 +42,7 @@ export class MovieView extends React.Component {
             </Row>
             {/* <Row>
               <Col className='movie-director'>
-                <Link to={`/director/${director._id}`}>
+                <Link to={`directors/${director._id}`}>
                   <Button variant="link">Director</Button>
                 </Link>
               </Col>
