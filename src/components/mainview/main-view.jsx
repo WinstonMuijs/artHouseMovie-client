@@ -34,6 +34,7 @@ export class MainView extends React.Component {
           user: localStorage.getItem('user')
         });
         this.getMovies(accessToken);
+        this.getDirectors(accessToken);
       }
     }
 
@@ -123,16 +124,22 @@ export class MainView extends React.Component {
             </Col>
           }} />
 
-          <Route exact path="/directors/" render={() => {
-            return directors.map(d => (<Col md={8} key={d._id}>
-              <DirectorView director={d} />
+          {/* <Route path="/directors/:directorId" render={({ match }) => {
+            return <Col md={8}>
+              <DirectorView director={directors.find(director => director._id == match.params.directorId)} />
             </Col>
+          }}/> */}
+
+          {/* <Route path="/directors/" render={() => {
+            return directors.map(d => (
+              <Col md={5} key={d._id}>
+                <DirectorView director={d} />
+              </Col>
             ))
-          }} />
+          }} /> */}
 
         </Row>
       </Router>
     );
   }
 }
-
