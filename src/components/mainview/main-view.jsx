@@ -10,7 +10,9 @@ import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { Navbar } from '../navbar/navbar';
-import { DirectorView } from '../director-view/director';
+import { DirectorCard } from '../director-card/director-card'
+import { DirectorView } from '../director-view/director-view';
+
 
 
 
@@ -58,6 +60,7 @@ export class MainView extends React.Component {
         headers: { Authorization:`Bearer ${token}`}
       })
       .then(response => {
+        console.log("Data has been received")
     // Assign the result to the state
         this.setState({
           directors: response.data
@@ -98,7 +101,7 @@ export class MainView extends React.Component {
    
   
   render() {
-    const { movies,directors, user } = this.state;
+    const { movies, directors, user } = this.state;
 
     if (!user) return <Row>
       <Col>
@@ -124,19 +127,19 @@ export class MainView extends React.Component {
             </Col>
           }} />
 
-          {/* <Route path="/directors/:directorId" render={({ match }) => {
+          <Route exact path="/directors" render={() => {
+            return directors.map(d => (
+              <Col md={5} key={d._id}>
+                <DirectorCard director={d} />
+              </Col>
+            ))
+          }} />
+
+          <Route path="/directors/:directorId" render={({ match }) => {
             return <Col md={8}>
               <DirectorView director={directors.find(director => director._id == match.params.directorId)} />
             </Col>
-          }}/> */}
-
-          {/* <Route path="/directors/" render={() => {
-            return directors.map(d => (
-              <Col md={5} key={d._id}>
-                <DirectorView director={d} />
-              </Col>
-            ))
-          }} /> */}
+          }}/>
 
         </Row>
       </Router>
