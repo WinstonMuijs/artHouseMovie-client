@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-import { Link } from "react-router-dom";
-import { CardImg } from 'react-bootstrap';
 
 export class DirectorView extends React.Component {
   render() {
@@ -17,6 +15,9 @@ export class DirectorView extends React.Component {
           <Card.Text>{director.name}</Card.Text>
           <Card.Text>{director.bio}</Card.Text>
           <Card.Text>{director.birthyear}</Card.Text>
+          <Link to={`/directors/${director._id}`}>
+            <Button variant="link">Open</Button>
+          </Link>
         </Card.Body>
       </Card>
     );
@@ -28,6 +29,7 @@ DirectorView.PropTypes = {
     _id: PropTypes.number,
     name: PropTypes.string.isRequired,
     bio: PropTypes.string.isRequired,
-    birthyear: PropTypes.date.isRequired,
+    birthyear: PropTypes.string,
+    deathyear: PropTypes.string
   }).isRequired
 };
