@@ -39,6 +39,12 @@ export class DirectorView extends React.Component {
                 <span className='value'>{director.birthyear}</span>
               </Col>
             </Row>
+                        <Row>
+              <Col className='movie-genre'>
+                <span className='label'>Deathyear:</span>
+                <span className='value'>{director.deathyear}</span>
+              </Col>
+            </Row>
 
             <Row>
               <Col>
@@ -52,11 +58,10 @@ export class DirectorView extends React.Component {
 
 
 DirectorView.PropTypes = {
-  movie: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    imageURL: PropTypes.string.isRequired,
-    genre: PropTypes.number.isRequired,
-    director: PropTypes.number.isRequired
+  director: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    bio: PropTypes.string.isRequired,
+    birtheyear: PropTypes.string.isRequired,
+    deathyear: PropTypes.string.isRequired
   }).isRequired
 };

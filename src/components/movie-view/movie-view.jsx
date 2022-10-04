@@ -42,7 +42,7 @@ export class MovieView extends React.Component {
             </Row>
             <Row>
               <Col className='movie-director'>
-                <Link to={`/directors`}>
+                <Link to="/directors">
                   <Button variant="link">Director</Button>
                 </Link>
               </Col>
