@@ -39,13 +39,13 @@ export class MovieView extends React.Component {
                 <span className='value'>{movie.genre}</span>
               </Col>
             </Row>
-            <Row>
+            {/* <Row>
               <Col className='movie-director'>
-                <Link to={`/directors/${director._id}`}>
+                <Link to={`/director/${director._id}`}>
                   <Button variant="link">Director</Button>
                 </Link>
               </Col>
-            </Row>
+            </Row> */}
 
             <Row>
               <Col>
@@ -67,4 +67,3 @@ MovieView.PropTypes = {
     director: PropTypes.number.isRequired
   }).isRequired
 };
-

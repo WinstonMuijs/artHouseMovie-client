@@ -25288,6 +25288,7 @@ class MainView extends _reactDefault.default.Component {
                 user: localStorage.getItem('user')
             });
             this.getMovies(accessToken);
+            this.getDirectors(accessToken);
         }
     }
     getMovies(token) {
@@ -25347,13 +25348,13 @@ class MainView extends _reactDefault.default.Component {
         if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Row, {
             __source: {
                 fileName: "src/components/mainview/main-view.jsx",
-                lineNumber: 102
+                lineNumber: 103
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
                 __source: {
                     fileName: "src/components/mainview/main-view.jsx",
-                    lineNumber: 103
+                    lineNumber: 104
                 },
                 __self: this,
                 children: /*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
@@ -25361,7 +25362,7 @@ class MainView extends _reactDefault.default.Component {
                     ,
                     __source: {
                         fileName: "src/components/mainview/main-view.jsx",
-                        lineNumber: 104
+                        lineNumber: 105
                     },
                     __self: this
                 })
@@ -25371,21 +25372,21 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/mainview/main-view.jsx",
-                lineNumber: 107
+                lineNumber: 108
             },
             __self: this
         }));
         return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "src/components/mainview/main-view.jsx",
-                lineNumber: 110
+                lineNumber: 111
             },
             __self: this,
             children: [
                 /*#__PURE__*/ _jsxRuntime.jsx(_navbar.Navbar, {
                     __source: {
                         fileName: "src/components/mainview/main-view.jsx",
-                        lineNumber: 111
+                        lineNumber: 112
                     },
                     __self: this
                 }),
@@ -25393,7 +25394,7 @@ class MainView extends _reactDefault.default.Component {
                     className: "main-view justify-content-md-center",
                     __source: {
                         fileName: "src/components/mainview/main-view.jsx",
-                        lineNumber: 112
+                        lineNumber: 113
                     },
                     __self: this,
                     children: [
@@ -25411,7 +25412,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/mainview/main-view.jsx",
-                                lineNumber: 113
+                                lineNumber: 114
                             },
                             __self: this
                         }),
@@ -25428,25 +25429,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/mainview/main-view.jsx",
-                                lineNumber: 120
-                            },
-                            __self: this
-                        }),
-                        /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
-                            exact: true,
-                            path: "/directors/",
-                            render: ()=>{
-                                return directors.map((d)=>/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
-                                        md: 8,
-                                        children: /*#__PURE__*/ _jsxRuntime.jsx(_director.DirectorView, {
-                                            director: d
-                                        })
-                                    }, d._id)
-                                );
-                            },
-                            __source: {
-                                fileName: "src/components/mainview/main-view.jsx",
-                                lineNumber: 126
+                                lineNumber: 121
                             },
                             __self: this
                         })
@@ -42328,7 +42311,7 @@ class MovieCard extends _reactDefault.default.Component {
         }));
     }
 }
-MovieCard.PropTypes = {
+MovieCard.propTypes = {
     movie: _propTypesDefault.default.shape({
         title: _propTypesDefault.default.string.isRequired,
         description: _propTypesDefault.default.string.isRequired,
@@ -42341,7 +42324,7 @@ MovieCard.PropTypes = {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","@parcel/transformer-js/src/esmodule-helpers.js":"6gzAh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"lRSmJ","react-bootstrap/Card":"MoOk8","react-bootstrap":"h2YVd","react-router-dom":"cpyQW","react-bootstrap/Button":"9CzHT"}],"cpyQW":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","@parcel/transformer-js/src/esmodule-helpers.js":"6gzAh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"lRSmJ","react-bootstrap/Card":"MoOk8","react-router-dom":"cpyQW","react-bootstrap/Button":"9CzHT","react-bootstrap":"h2YVd"}],"cpyQW":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MemoryRouter", ()=>_reactRouter.MemoryRouter
@@ -44814,38 +44797,6 @@ class MovieView extends _reactDefault.default.Component {
                 /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Row, {
                     __source: {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 42
-                    },
-                    __self: this,
-                    children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
-                        className: "movie-director",
-                        __source: {
-                            fileName: "src/components/movie-view/movie-view.jsx",
-                            lineNumber: 43
-                        },
-                        __self: this,
-                        children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
-                            to: `/directors/${director._id}`,
-                            __source: {
-                                fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 44
-                            },
-                            __self: this,
-                            children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                                variant: "link",
-                                __source: {
-                                    fileName: "src/components/movie-view/movie-view.jsx",
-                                    lineNumber: 45
-                                },
-                                __self: this,
-                                children: "Director"
-                            })
-                        })
-                    })
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Row, {
-                    __source: {
-                        fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 50
                     },
                     __self: this,
@@ -45026,28 +44977,26 @@ var _button = require("react-bootstrap/Button");
 var _buttonDefault = parcelHelpers.interopDefault(_button);
 var _card = require("react-bootstrap/Card");
 var _cardDefault = parcelHelpers.interopDefault(_card);
-var _reactRouterDom = require("react-router-dom");
-var _reactBootstrap = require("react-bootstrap");
 class DirectorView extends _reactDefault.default.Component {
     render() {
         const { director  } = this.props;
         return(/*#__PURE__*/ _jsxRuntime.jsx(_cardDefault.default, {
             __source: {
                 fileName: "src/components/director-view/director.jsx",
-                lineNumber: 14
+                lineNumber: 12
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsxs(_cardDefault.default.Body, {
                 __source: {
                     fileName: "src/components/director-view/director.jsx",
-                    lineNumber: 15
+                    lineNumber: 13
                 },
                 __self: this,
                 children: [
                     /*#__PURE__*/ _jsxRuntime.jsx(_cardDefault.default.Title, {
                         __source: {
                             fileName: "src/components/director-view/director.jsx",
-                            lineNumber: 16
+                            lineNumber: 14
                         },
                         __self: this,
                         children: director._id
@@ -45055,7 +45004,7 @@ class DirectorView extends _reactDefault.default.Component {
                     /*#__PURE__*/ _jsxRuntime.jsx(_cardDefault.default.Text, {
                         __source: {
                             fileName: "src/components/director-view/director.jsx",
-                            lineNumber: 17
+                            lineNumber: 15
                         },
                         __self: this,
                         children: director.name
@@ -45063,7 +45012,7 @@ class DirectorView extends _reactDefault.default.Component {
                     /*#__PURE__*/ _jsxRuntime.jsx(_cardDefault.default.Text, {
                         __source: {
                             fileName: "src/components/director-view/director.jsx",
-                            lineNumber: 18
+                            lineNumber: 16
                         },
                         __self: this,
                         children: director.bio
@@ -45071,10 +45020,27 @@ class DirectorView extends _reactDefault.default.Component {
                     /*#__PURE__*/ _jsxRuntime.jsx(_cardDefault.default.Text, {
                         __source: {
                             fileName: "src/components/director-view/director.jsx",
-                            lineNumber: 19
+                            lineNumber: 17
                         },
                         __self: this,
                         children: director.birthyear
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx(Link, {
+                        to: `/directors/${director._id}`,
+                        __source: {
+                            fileName: "src/components/director-view/director.jsx",
+                            lineNumber: 18
+                        },
+                        __self: this,
+                        children: /*#__PURE__*/ _jsxRuntime.jsx(_buttonDefault.default, {
+                            variant: "link",
+                            __source: {
+                                fileName: "src/components/director-view/director.jsx",
+                                lineNumber: 19
+                            },
+                            __self: this,
+                            children: "Open"
+                        })
                     })
                 ]
             })
@@ -45086,7 +45052,8 @@ DirectorView.PropTypes = {
         _id: _propTypesDefault.default.number,
         name: _propTypesDefault.default.string.isRequired,
         bio: _propTypesDefault.default.string.isRequired,
-        birthyear: _propTypesDefault.default.date.isRequired
+        birthyear: _propTypesDefault.default.string,
+        deathyear: _propTypesDefault.default.string
     }).isRequired
 };
 
@@ -45095,6 +45062,6 @@ DirectorView.PropTypes = {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","react-bootstrap/Button":"9CzHT","react-bootstrap/Card":"MoOk8","react-router-dom":"cpyQW","react-bootstrap":"h2YVd","@parcel/transformer-js/src/esmodule-helpers.js":"6gzAh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"lRSmJ"}],"jUTZ8":[function() {},{}]},["fNZol","i7ao3","dLPEP"], "dLPEP", "parcelRequire7188")
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","@parcel/transformer-js/src/esmodule-helpers.js":"6gzAh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"lRSmJ","react-bootstrap/Button":"9CzHT","react-bootstrap/Card":"MoOk8"}],"jUTZ8":[function() {},{}]},["fNZol","i7ao3","dLPEP"], "dLPEP", "parcelRequire7188")
 
 //# sourceMappingURL=index.6701a6e1.js.map
