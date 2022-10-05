@@ -134,14 +134,14 @@ export class MainView extends React.Component {
 
           <Route exact path="/directors" render={() => {
             return directors.map(d => (
-              <Col md={5} key={d._id}>
+              <Col md={8} key={d._id}>
                 <DirectorCard director={d} />
               </Col>
             ))
           }} />
 
           <Route path="/directors/:directorId" render={({ match }) => {
-            return <Col md={8}>
+            return <Col md={5}>
               <DirectorView director={directors.find(director => director._id == match.params.directorId)} />
             </Col>
           }}/>
