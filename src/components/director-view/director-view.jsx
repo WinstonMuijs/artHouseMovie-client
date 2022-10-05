@@ -9,7 +9,7 @@ export class DirectorView extends React.Component {
         const { director, onBackClick } = this.props;
 
         return (
-        <Container className="director-view">
+        <Container className="movie-view">
          <Row>
          <Col></Col>
             <Col className='director-id'>
@@ -19,25 +19,25 @@ export class DirectorView extends React.Component {
           </Row>
           <Row>
             <Col className='director-name'>
-                <span className='label'>Name:</span>
+                <span className='label'>Name : </span>
                 <span className='value'>{director.name}</span>
             </Col>
           </Row>
           <Row>
             <Col className='movie-description'>
-                <span className='label'>Bio:</span>
+                <span className='label'>Bio : </span>
                 <span className='value'>{director.bio}</span>
                 </Col> 
             </Row>
             <Row>
               <Col className='movie-genre'>
-                <span className='label'>Birthyear:</span>
+                <span className='label'>Birthyear : </span>
                 <span className='value'>{director.birthyear}</span>
               </Col>
             </Row>
                         <Row>
               <Col className='movie-genre'>
-                <span className='label'>Deathyear:</span>
+                <span className='label'>Deathyear : </span>
                 <span className='value'>{director.deathyear}</span>
               </Col>
             </Row>
@@ -57,7 +57,7 @@ DirectorView.PropTypes = {
   director: PropTypes.shape({
     name: PropTypes.string.isRequired,
     bio: PropTypes.string.isRequired,
-    birtheyear: PropTypes.string.isRequired,
-    deathyear: PropTypes.string.isRequired
+    birtheyear: PropTypes.instanceOf(Date),
+    deathyear: PropTypes.instanceOf(Date)
   }).isRequired
 };
