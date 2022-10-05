@@ -12,8 +12,9 @@ export class DirectorCard extends React.Component {
     return (
       <Card>
       <Card.Body>
-          <Card.Title>{director._id}</Card.Title>
-          <Card.Text>{director.name}</Card.Text>
+          <Card.Title>Director:</Card.Title>
+          <Card.Text>{director._id}</Card.Text>
+          <Card.Text className='fullname'>{director.name}</Card.Text>
           <Card.Text>{director.bio}</Card.Text>
           <Card.Text>{director.birthyear}</Card.Text>
           <Link to={`/directors/${director._id}`}>
@@ -25,9 +26,8 @@ export class DirectorCard extends React.Component {
   }
 }
 
-DirectorCard.PropTypes = {
+DirectorCard.propTypes = {
   director: PropTypes.shape({
-    _id: PropTypes.number,
     name: PropTypes.string.isRequired,
     bio: PropTypes.string.isRequired,
     birthyear: PropTypes.string,
