@@ -28,8 +28,8 @@ export class DirectorCard extends React.Component {
 
 DirectorCard.propTypes = {
   director: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    bio: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    bio: PropTypes.string,
     birthyear: PropTypes.string,
     deathyear: PropTypes.string
   }).isRequired
