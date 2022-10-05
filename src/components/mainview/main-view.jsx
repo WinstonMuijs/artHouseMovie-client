@@ -12,6 +12,8 @@ import { MovieView } from '../movie-view/movie-view';
 import { Navbar } from '../navbar/navbar';
 import { DirectorCard } from '../director-card/director-card'
 import { DirectorView } from '../director-view/director-view';
+import { GenreCard } from '../genre-card/genre-card';
+import { GenreView } from '../genre-view/genre-view';
 
 
 
@@ -25,6 +27,7 @@ export class MainView extends React.Component {
         this.state = {
             movies: [],
             directors: [],
+            genres: [],
             user: null
         }
     }
@@ -37,6 +40,7 @@ export class MainView extends React.Component {
         });
         this.getMovies(accessToken);
         this.getDirectors(accessToken);
+        this.getGenres(accessToken);
       }
     }
 
@@ -96,12 +100,13 @@ export class MainView extends React.Component {
       localStorage.setItem('user', authData.user.name);
       this.getMovies(authData.token);
       this.getDirectors(authData.token);
+      this.getGenres(authData.token);
     }
 
    
   
   render() {
-    const { movies, directors, user } = this.state;
+    const { movies, directors, genres, user } = this.state;
 
     if (!user) return <Row>
       <Col>
@@ -138,6 +143,20 @@ export class MainView extends React.Component {
           <Route path="/directors/:directorId" render={({ match }) => {
             return <Col md={8}>
               <DirectorView director={directors.find(director => director._id == match.params.directorId)} />
+            </Col>
+          }}/>
+
+          <Route exact path="/genres" render={() => {
+            return genres.map(g => (
+              <Col md={5} key={g._id}>
+                <GenreCard genre={g} />
+              </Col>
+            ))
+          }} />
+
+          <Route path="/genres/:genreId" render={({ match }) => {
+            return <Col md={8}>
+              <GenreView genre={genres.find(genre => genre._id == match.params.genreId)} />
             </Col>
           }}/>
 
