@@ -3,26 +3,22 @@ import PropTypes from 'prop-types';
 import {Container, Row, Col, Button} from 'react-bootstrap';
 
 
-
-import {Link} from "react-router-dom";
-
-
 export class DirectorView extends React.Component {
 
     render() {
         const { director, onBackClick } = this.props;
 
         return (
-        <Container className="movie-view">
+        <Container className="director-view">
          <Row>
          <Col></Col>
-            <Col className='movie-poster'>
+            <Col className='director-id'>
                 <span>{director._id}</span>
             </Col>
             <Col></Col>
           </Row>
           <Row>
-            <Col className='movie-title'>
+            <Col className='director-name'>
                 <span className='label'>Name:</span>
                 <span className='value'>{director.name}</span>
             </Col>
