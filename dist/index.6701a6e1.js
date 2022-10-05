@@ -25441,6 +25441,40 @@ class MainView extends _reactDefault.default.Component {
                             __self: this
                         }),
                         /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
+                            path: "/directors/:id",
+                            render: ({ match  })=>{
+                                if (!movies) return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
+                                    className: "main-view"
+                                }));
+                                return(/*#__PURE__*/ _jsxRuntime.jsx(_directorCard.DirectorCard, {
+                                    director: directors.find((d)=>d._id == match.params.id
+                                    )
+                                }));
+                            },
+                            __source: {
+                                fileName: "src/components/mainview/main-view.jsx",
+                                lineNumber: 135
+                            },
+                            __self: this
+                        }),
+                        /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
+                            path: "/genres/:id",
+                            render: ({ match  })=>{
+                                if (!movies) return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
+                                    className: "main-view"
+                                }));
+                                return(/*#__PURE__*/ _jsxRuntime.jsx(_genreCard.GenreCard, {
+                                    genre: genres.find((g)=>g._id == match.params.id
+                                    )
+                                }));
+                            },
+                            __source: {
+                                fileName: "src/components/mainview/main-view.jsx",
+                                lineNumber: 141
+                            },
+                            __self: this
+                        }),
+                        /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
                             exact: true,
                             path: "/directors",
                             render: ()=>{
@@ -25454,24 +25488,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/mainview/main-view.jsx",
-                                lineNumber: 135
-                            },
-                            __self: this
-                        }),
-                        /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
-                            path: "/directors/:directorId",
-                            render: ({ match  })=>{
-                                return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
-                                    md: 5,
-                                    children: /*#__PURE__*/ _jsxRuntime.jsx(_directorView.DirectorView, {
-                                        director: directors.find((director)=>director._id == match.params.directorId
-                                        )
-                                    })
-                                }));
-                            },
-                            __source: {
-                                fileName: "src/components/mainview/main-view.jsx",
-                                lineNumber: 143
+                                lineNumber: 147
                             },
                             __self: this
                         }),
@@ -25489,24 +25506,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/mainview/main-view.jsx",
-                                lineNumber: 149
-                            },
-                            __self: this
-                        }),
-                        /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
-                            path: "/genres/:genreId",
-                            render: ({ match  })=>{
-                                return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
-                                    md: 8,
-                                    children: /*#__PURE__*/ _jsxRuntime.jsx(_genreView.GenreView, {
-                                        genre: genres.find((genre)=>genre._id == match.params.genreId
-                                        )
-                                    })
-                                }));
-                            },
-                            __source: {
-                                fileName: "src/components/mainview/main-view.jsx",
-                                lineNumber: 157
+                                lineNumber: 161
                             },
                             __self: this
                         })
@@ -44887,7 +44887,7 @@ class MovieView extends _reactDefault.default.Component {
                         },
                         __self: this,
                         children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
-                            to: "/genres",
+                            to: `/genres/${movie.genre}`,
                             __source: {
                                 fileName: "src/components/movie-view/movie-view.jsx",
                                 lineNumber: 45
@@ -44926,7 +44926,7 @@ class MovieView extends _reactDefault.default.Component {
                                     lineNumber: 52
                                 },
                                 __self: this,
-                                children: "Director:"
+                                children: "Director : "
                             }),
                             /*#__PURE__*/ _jsxRuntime.jsx("span", {
                                 className: "value",
@@ -44954,7 +44954,7 @@ class MovieView extends _reactDefault.default.Component {
                         },
                         __self: this,
                         children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
-                            to: "/directors",
+                            to: `/directors/${movie.director}`,
                             __source: {
                                 fileName: "src/components/movie-view/movie-view.jsx",
                                 lineNumber: 58
@@ -44975,13 +44975,13 @@ class MovieView extends _reactDefault.default.Component {
                 /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Row, {
                     __source: {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 64
+                        lineNumber: 63
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
                         __source: {
                             fileName: "src/components/movie-view/movie-view.jsx",
-                            lineNumber: 65
+                            lineNumber: 64
                         },
                         __self: this,
                         children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
@@ -44991,7 +44991,7 @@ class MovieView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 66
+                                lineNumber: 65
                             },
                             __self: this,
                             children: "Back"
@@ -45237,8 +45237,8 @@ class DirectorCard extends _reactDefault.default.Component {
 }
 DirectorCard.propTypes = {
     director: _propTypesDefault.default.shape({
-        name: _propTypesDefault.default.string.isRequired,
-        bio: _propTypesDefault.default.string.isRequired,
+        name: _propTypesDefault.default.string,
+        bio: _propTypesDefault.default.string,
         birthyear: _propTypesDefault.default.string,
         deathyear: _propTypesDefault.default.string
     }).isRequired
@@ -45292,7 +45292,7 @@ class DirectorView extends _reactDefault.default.Component {
                             __self: this
                         }),
                         /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
-                            className: "director-id",
+                            className: "movie-view",
                             __source: {
                                 fileName: "src/components/director-view/director-view.jsx",
                                 lineNumber: 15
@@ -45323,7 +45323,7 @@ class DirectorView extends _reactDefault.default.Component {
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Col, {
-                        className: "director-name",
+                        className: "movie-view",
                         __source: {
                             fileName: "src/components/director-view/director-view.jsx",
                             lineNumber: 21
@@ -45486,10 +45486,10 @@ class DirectorView extends _reactDefault.default.Component {
         }));
     }
 }
-DirectorView.PropTypes = {
+DirectorView.propTypes = {
     director: _propTypesDefault.default.shape({
-        name: _propTypesDefault.default.string.isRequired,
-        bio: _propTypesDefault.default.string.isRequired,
+        name: _propTypesDefault.default.string,
+        bio: _propTypesDefault.default.string,
         birtheyear: _propTypesDefault.default.instanceOf(Date),
         deathyear: _propTypesDefault.default.instanceOf(Date)
     }).isRequired
