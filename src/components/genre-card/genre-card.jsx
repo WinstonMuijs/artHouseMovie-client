@@ -12,7 +12,8 @@ export class GenreCard extends React.Component {
     return (
       <Card>
       <Card.Body>
-          <Card.Title>{genre._id}</Card.Title>
+          <Card.Title>Genre:</Card.Title>
+          <Card.Text>{genre._id}</Card.Text>
           <Card.Text>{genre.name}</Card.Text>
           <Card.Text>{genre.description}</Card.Text>
           <Link to={`/genres/${genre._id}`}>
@@ -24,7 +25,7 @@ export class GenreCard extends React.Component {
   }
 }
 
-GenreCard.PropTypes = {
+GenreCard.propTypes = {
   genre: PropTypes.shape({
     _id: PropTypes.number,
     name: PropTypes.string.isRequired,
