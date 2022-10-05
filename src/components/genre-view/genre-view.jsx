@@ -10,22 +10,15 @@ export class GenreView extends React.Component {
 
         return (
         <Container className="movie-view">
-         <Row>
-         <Col></Col>
-            <Col className='genre-id'>
-                <span>{genre._id}</span>
-            </Col>
-            <Col></Col>
-          </Row>
           <Row>
             <Col className='genre-title'>
-                <span className='label'>Name genre:</span>
+                <span className='label'>Name : </span>
                 <span className='value'>{genre.name}</span>
             </Col>
           </Row>
           <Row>
             <Col className='genre-description'>
-                <span className='label'>Description:</span>
+                <span className='label'>Description : </span>
                 <span className='value'>{genre.description}</span>
                 </Col> 
             </Row>
