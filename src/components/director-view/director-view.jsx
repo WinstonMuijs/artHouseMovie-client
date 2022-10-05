@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import {Container, Row, Col, Button} from 'react-bootstrap';
 
 
@@ -12,13 +12,13 @@ export class DirectorView extends React.Component {
         <Container className="movie-view">
          <Row>
          <Col></Col>
-            <Col className='director-id'>
+            <Col className='movie-view'>
                 <span>{director._id}</span>
             </Col>
             <Col></Col>
           </Row>
           <Row>
-            <Col className='director-name'>
+            <Col className='movie-view'>
                 <span className='label'>Name : </span>
                 <span className='value'>{director.name}</span>
             </Col>
@@ -53,11 +53,11 @@ export class DirectorView extends React.Component {
 }
 
 
-DirectorView.PropTypes = {
-  director: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    bio: PropTypes.string.isRequired,
-    birtheyear: PropTypes.instanceOf(Date),
-    deathyear: PropTypes.instanceOf(Date)
+DirectorView.propTypes = {
+  director: propTypes.shape({
+    name: propTypes.string,
+    bio: propTypes.string,
+    birtheyear: propTypes.instanceOf(Date),
+    deathyear: propTypes.instanceOf(Date)
   }).isRequired
 };
