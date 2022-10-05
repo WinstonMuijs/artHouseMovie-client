@@ -132,6 +132,18 @@ export class MainView extends React.Component {
             </Col>
           }} />
 
+          <Route path="/directors/:id" render={({ match }) => {
+            if(!movies) return <div className="main-view"/>;
+
+            return <DirectorCard director={directors.find(d => d._id == match.params.id)}/>
+          }}/>
+
+          <Route path="/genres/:id" render={({ match }) => {
+            if(!movies) return <div className="main-view"/>;
+
+            return <GenreCard genre={genres.find(g => g._id == match.params.id)}/>
+          }}/>
+
           <Route exact path="/directors" render={() => {
             return directors.map(d => (
               <Col md={8} key={d._id}>
@@ -140,11 +152,11 @@ export class MainView extends React.Component {
             ))
           }} />
 
-          <Route path="/directors/:directorId" render={({ match }) => {
+          {/* <Route path="/directors/:directorId" render={({ match }) => {
             return <Col md={5}>
               <DirectorView director={directors.find(director => director._id == match.params.directorId)} />
             </Col>
-          }}/>
+          }}/> */}
 
           <Route exact path="/genres" render={() => {
             return genres.map(g => (
@@ -154,11 +166,11 @@ export class MainView extends React.Component {
             ))
           }} />
 
-          <Route path="/genres/:genreId" render={({ match }) => {
+          {/* <Route path="/genres/:genreId" render={({ match }) => {
             return <Col md={8}>
               <GenreView genre={genres.find(genre => genre._id == match.params.genreId)} />
             </Col>
-          }}/>
+          }}/> */}
 
         </Row>
       </Router>
