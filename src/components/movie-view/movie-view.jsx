@@ -24,14 +24,20 @@ export class MovieView extends React.Component {
           </Row>
           <Row>
             <Col className='movie-title'>
-                <span className='label'>Title:</span>
+                <span className='label'>Title : </span>
                 <span className='value'>{movie.title}</span>
             </Col>
           </Row>
           <Row>
             <Col className='movie-description'>
-                <span className='label'>Description:</span>
+                <span className='label'>Description : </span>
                 <span className='value'>{movie.description}</span>
+                </Col> 
+            </Row>
+            <Row>
+            <Col className='movie-description'>
+                <span className='label'>Genre : </span>
+                <span className='value'>{movie.genre}</span>
                 </Col> 
             </Row>
             <Row>
@@ -40,6 +46,12 @@ export class MovieView extends React.Component {
                   <Button variant="link">Genre</Button>
                 </Link>
               </Col>
+            </Row>
+            <Row>
+            <Col className='movie-description'>
+                <span className='label'>Director:</span>
+                <span className='value'>{movie.director}</span>
+                </Col> 
             </Row>
             <Row>
               <Col className='movie-director'>
