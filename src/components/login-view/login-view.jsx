@@ -2,9 +2,12 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import {Form , Button, Container, Row, Col, Card} from 'react-bootstrap';
 import axios from 'axios';
+import { Navbar } from '../navbar/navbar';
 
+import { Link } from 'react-router-dom';
 
 import "./login-view.scss";
+import { Navbar } from '../navbar/navbar';
 
 export function LoginView(props) {
   const [name, setUsername] = useState('');
@@ -76,6 +79,7 @@ export function LoginView(props) {
                 </Form>
               </Card.Body>
             </Card>
+            
           </Col>
         <Col></Col>
       </Row>
