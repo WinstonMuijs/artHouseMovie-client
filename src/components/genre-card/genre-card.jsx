@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 export class GenreCard extends React.Component {
   render() {
-    const { genre } = this.props;
+    const { genre, onBackClick } = this.props;
 
     return (
       <Card>
@@ -16,9 +16,7 @@ export class GenreCard extends React.Component {
           <Card.Text>{genre._id}</Card.Text>
           <Card.Text>{genre.name}</Card.Text>
           <Card.Text>{genre.description}</Card.Text>
-          <Link to={`/genres/${genre._id}`}>
-            <Button variant="link">Open</Button>
-          </Link>
+          <Button className='btn' onClick={() => { onBackClick(); }}>Back</Button>
         </Card.Body>
       </Card>
     );
