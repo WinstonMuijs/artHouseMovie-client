@@ -44,7 +44,7 @@ export class DirectorView extends React.Component {
 
             <Row>
               <Col>
-              <Button className='btn' onClick={() => { onBackClick(null); }}>Back</Button>
+              <Button className='btn' onClick={() => { onBackClick(); }}>Back</Button>
               </Col>
             </Row>
         </Container>
