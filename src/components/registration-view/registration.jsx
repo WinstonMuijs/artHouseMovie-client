@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {Form, Button, FormGroup, Container, Card, CardGroup, Col , Row} from 'react-bootstrap';
+import axios from 'axios';
 
 
 
-export function RegistrationView(props) {
+export function RegistrationView() {
     const [ name, setUsername ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ email, setEmail] = useState('');

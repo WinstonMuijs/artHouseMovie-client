@@ -2,6 +2,8 @@ import React from "react";
 
 import { Container, Navbar, Nav, Button } from "react-bootstrap";
 
+
+
 import "./navbar.scss";
 
 export function Navbar({ user }) {
@@ -10,19 +12,33 @@ export function Navbar({ user }) {
     window.open("/", "_self");
   };
 
+    const isAuth = () => {
+    if (typeof window == "undefined") {
+      return false;
+    }
+    if (localStorage.getItem("token")) {
+      return localStorage.getItem("token");
+    } else {
+      return false;
+    }
+  };
+
   return (
     <>
     <Navbar className="main-nav" expand="lg" bg="dark" variant="dark">
       <Container>
       <Navbar.Brand className="text-light">ArtHouseMovies</Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" color="#000"/>
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="ml-auto">
-          {<Nav.Link href="/">Home</Nav.Link>}
-          {<Nav.Link href={`/users/${user}`}>{user}</Nav.Link>}
+      <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+      <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav className="ml-auto">
+          {isAuth() && <Nav.Link href="/">Home</Nav.Link>}
+          {isAuth() && <Nav.Link  href={`/users/${user}`}>{user}</Nav.Link>}
 
-          <Button onClick={onLoggedOut}>Logout</Button>
+          {isAuth() && <Button onClick={onLoggedOut}>Logout</Button>}
+          {!isAuth() && <Nav.Link href="/">Sign-in</Nav.Link>}
+          {!isAuth() && <Nav.Link href="/register">Register</Nav.Link>}
         </Nav>
+        
       </Navbar.Collapse>
       </Container>
     </Navbar>
