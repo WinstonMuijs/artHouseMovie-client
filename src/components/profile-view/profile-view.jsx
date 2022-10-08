@@ -79,12 +79,13 @@ export class ProfileView extends React.Component {
   editUser = (e) => {
     e.preventDefault();
     const user = localStorage.getItem("user");
+    console.log(user);
     const token = localStorage.getItem("token");
     axios
       .put(
         `https://arthousemovie.herokuapp.com/users/${user}`,
         {
-          name: this.state.user,
+          name: this.state.name,
           password: this.state.password,
           email: this.state.email,
           birthday: this.state.birthday,
