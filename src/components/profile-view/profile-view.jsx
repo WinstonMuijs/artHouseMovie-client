@@ -57,7 +57,7 @@ export class ProfileView extends React.Component {
   }
 
   getUser = (token) => {
-    const user = localStorage.getItem("user");
+    const user = localStorage.getItem('user');
     axios
       .get(`https://arthousemovie.herokuapp.com/users/${user}`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -78,9 +78,9 @@ export class ProfileView extends React.Component {
 
   editUser = (e) => {
     e.preventDefault();
-    const user = localStorage.getItem("user");
+    const user = localStorage.getItem('user');
     console.log(user);
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
     axios
       .put(
         `https://arthousemovie.herokuapp.com/users/${user}`,
