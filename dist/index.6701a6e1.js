@@ -25283,7 +25283,8 @@ class MainView extends _reactDefault.default.Component {
             movies: [],
             directors: [],
             genres: [],
-            user: null
+            user: null,
+            userId: null
         };
     }
     componentDidMount() {
@@ -25364,7 +25365,7 @@ class MainView extends _reactDefault.default.Component {
         return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "src/components/mainview/main-view.jsx",
-                lineNumber: 123
+                lineNumber: 124
             },
             __self: this,
             children: [
@@ -25372,7 +25373,7 @@ class MainView extends _reactDefault.default.Component {
                     user: user,
                     __source: {
                         fileName: "src/components/mainview/main-view.jsx",
-                        lineNumber: 124
+                        lineNumber: 125
                     },
                     __self: this
                 }),
@@ -25380,7 +25381,7 @@ class MainView extends _reactDefault.default.Component {
                     className: "main-view justify-content-md-center",
                     __source: {
                         fileName: "src/components/mainview/main-view.jsx",
-                        lineNumber: 125
+                        lineNumber: 126
                     },
                     __self: this,
                     children: [
@@ -25407,7 +25408,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/mainview/main-view.jsx",
-                                lineNumber: 127
+                                lineNumber: 128
                             },
                             __self: this
                         }),
@@ -25422,7 +25423,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/mainview/main-view.jsx",
-                                lineNumber: 145
+                                lineNumber: 146
                             },
                             __self: this
                         }),
@@ -25448,7 +25449,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/mainview/main-view.jsx",
-                                lineNumber: 154
+                                lineNumber: 155
                             },
                             __self: this
                         }),
@@ -25471,7 +25472,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/mainview/main-view.jsx",
-                                lineNumber: 170
+                                lineNumber: 171
                             },
                             __self: this
                         }),
@@ -25494,7 +25495,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/mainview/main-view.jsx",
-                                lineNumber: 183
+                                lineNumber: 184
                             },
                             __self: this
                         }),
@@ -25515,7 +25516,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/mainview/main-view.jsx",
-                                lineNumber: 203
+                                lineNumber: 204
                             },
                             __self: this
                         })
@@ -28750,13 +28751,13 @@ function RegistrationView() {
     });
     const validate = ()=>{
         let isReq = true;
-        if (!username) {
+        if (!name) {
             setValues({
                 ...values,
                 usernameErr: "Username Required"
             });
             isReq = false;
-        } else if (username.length < 5) {
+        } else if (name.length < 5) {
             setValues({
                 ...values,
                 usernameErr: "Username must be 5 characters long"
@@ -28999,7 +29000,6 @@ function RegistrationView() {
                                                     type: "date",
                                                     onChange: (e)=>setBirthday(e.target.value)
                                                     ,
-                                                    required: true,
                                                     placeholder: "Please enter your Birthday",
                                                     __source: {
                                                         fileName: "src/components/registration-view/registration.jsx",
@@ -45770,7 +45770,7 @@ class ProfileView extends _reactDefault.default.Component {
         window.open("/", "_self");
     }
     getUser = (token)=>{
-        const user = localStorage.getItem("user");
+        const user = localStorage.getItem('user');
         _axiosDefault.default.get(`https://arthousemovie.herokuapp.com/users/${user}`, {
             headers: {
                 Authorization: `Bearer ${token}`
@@ -45789,9 +45789,9 @@ class ProfileView extends _reactDefault.default.Component {
     };
     editUser = (e)=>{
         e.preventDefault();
-        const user = localStorage.getItem("user");
+        const user = localStorage.getItem('user');
         console.log(user);
-        const token = localStorage.getItem("token");
+        const token = localStorage.getItem('token');
         _axiosDefault.default.put(`https://arthousemovie.herokuapp.com/users/${user}`, {
             name: this.state.name,
             password: this.state.password,

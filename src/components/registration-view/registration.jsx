@@ -18,10 +18,10 @@ export function RegistrationView() {
 
     const validate = () => {
       let isReq = true;
-      if (!username) {
+      if (!name) {
         setValues({ ...values, usernameErr: "Username Required" });
         isReq = false;
-      } else if (username.length < 5) {
+      } else if (name.length < 5) {
           setValues({
           ...values,
           usernameErr: "Username must be 5 characters long",
@@ -99,7 +99,7 @@ export function RegistrationView() {
                      </Form.Group>
                       <Form.Group className="mb-3" controlId="formBirthday">
                         <Form.Label>Birthday:</Form.Label>
-                        <Form.Control type="date" onChange={e => setBirthday(e.target.value)} required placeholder='Please enter your Birthday' />
+                        <Form.Control type="date" onChange={e => setBirthday(e.target.value)} placeholder='Please enter your Birthday' />
                       </Form.Group>
                       <Button variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
                     </Form>
@@ -119,6 +119,6 @@ RegistrationView.propTypes = {
     name: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
-    birthday: PropTypes.string,
+    birthday: PropTypes.string
   }),
 };
