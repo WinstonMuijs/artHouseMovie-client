@@ -18,6 +18,7 @@ export function RegistrationView() {
 
     const validate = () => {
       let isReq = true;
+
       if (!name) {
         setValues({ ...values, usernameErr: "Username Required" });
         isReq = false;
@@ -96,13 +97,14 @@ export function RegistrationView() {
                         <Form.Label>Email:</Form.Label>
                        <Form.Control type="email" onChange={e => setEmail(e.target.value)} required placeholder='please enter your email'/>
                        {values.emailErr && < p>{values.emailErr}</p>}
-                     </Form.Group>
+                      </Form.Group>
                       <Form.Group className="mb-3" controlId="formBirthday">
                         <Form.Label>Birthday:</Form.Label>
                         <Form.Control type="date" onChange={e => setBirthday(e.target.value)} placeholder='Please enter your Birthday' />
                       </Form.Group>
                       <Button variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
                     </Form>
+
                   </Card.Body>
                 </Card>
               </CardGroup>
@@ -116,6 +118,7 @@ export function RegistrationView() {
 
 RegistrationView.propTypes = {
   register: PropTypes.shape({
+    id: PropTypes.number,
     name: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
