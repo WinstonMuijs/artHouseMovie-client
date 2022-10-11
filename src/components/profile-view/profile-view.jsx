@@ -103,12 +103,12 @@ export class ProfileView extends React.Component {
           birthday: response.data.birthday,
         });
 
-        localStorage.setItem("id", this.state.id);
+        localStorage.setItem("id", this.state._id);
         const data = response.data;
         console.log(data);
-        console.log(this.state.id);
+        console.log(this.state._id);
         alert("Profile is updated!");
-        window.open(`/users/${id}`, "_self");
+        window.open(`/users/${_id}`, "_self");
       })
       .catch(function (error) {
         console.log(error);
