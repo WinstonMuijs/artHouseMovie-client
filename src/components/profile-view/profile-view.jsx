@@ -15,6 +15,7 @@ export class ProfileView extends React.Component {
   constructor() {
     super();
     this.state = {
+      _id: null,
       name: null,
       password: null,
       email: null,
@@ -29,12 +30,12 @@ export class ProfileView extends React.Component {
   }
 
   removeFavorite = (e, movie) => {
-    const user = localStorage.getItem("user");
+    const _id = localStorage.getItem("_id");
     const token = localStorage.getItem("token");
     console.log(this.props);
     axios
       .delete(
-        `https://arthousemovies.herokuapp.com/users/${user}/movies/${movie._id}`,
+        `https://arthousemovies.herokuapp.com/users/${_id}/movies/${movie._id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       )
       .then((response) => {
@@ -64,6 +65,7 @@ export class ProfileView extends React.Component {
       })
       .then((response) => {
         this.setState({
+          _id: response.data._id,
           name: response.data.name,
           password: response.data.password,
           email: response.data.email,
@@ -76,14 +78,13 @@ export class ProfileView extends React.Component {
       });
   };
 
-  editUser = (e) => {
+  updateUser = (e) => {
     e.preventDefault();
-    const user = localStorage.getItem('user');
-    console.log(user);
+    const _id = localStorage.getItem('_id');
     const token = localStorage.getItem('token');
     axios
       .put(
-        `https://arthousemovie.herokuapp.com/users/${user}`,
+        `https://arthousemovie.herokuapp.com/users/${_id}`,
         {
           name: this.state.name,
           password: this.state.password,
@@ -102,25 +103,26 @@ export class ProfileView extends React.Component {
           birthday: response.data.birthday,
         });
 
-        localStorage.setItem("user", this.state.name);
+        localStorage.setItem("id", this.state._id);
         const data = response.data;
         console.log(data);
-        console.log(this.state.name);
+        console.log(this.state._id);
         alert("Profile is updated!");
-        window.open(`/users/${user}`, "_self");
+        window.open(`/users/${_id}`, "_self");
       })
       .catch(function (error) {
         console.log(error);
+        alert("Profile is Not updated!");
       });
   };
 
   // Deregister
   onDeleteUser() {
-    const user = localStorage.getItem("user");
+    const email = localStorage.getItem("email");
     const token = localStorage.getItem("token");
 
     axios
-      .delete(`https://arthousemovie.herokuapp.com/users/${user}`, {
+      .delete(`https://arthousemovie.herokuapp.com/users/${email}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
@@ -190,7 +192,7 @@ export class ProfileView extends React.Component {
                   <Form
                     className="update-form"
                     onSubmit={(e) =>
-                      this.editUser(
+                      this.updateUser(
                         e,
                         this.name,
                         this.password,
@@ -241,7 +243,7 @@ export class ProfileView extends React.Component {
                       <Button
                         variant="warning"
                         type="submit"
-                        onClick={() => this.editUser()}
+                        onClick={() => this.updateUser()}
                       >
                         Update User
                       </Button>
