@@ -55,14 +55,14 @@ export function LoginView(props) {
 
 
   return (
-    <Container ClassName="container">
+    <Container className="container">
       <Row>
         <Col></Col>
           <Col>
             <Card className='moviecard' style={{ marginTop: 100, marginBottom : 50, width: '300px'}}>
               <Card.Body>
                 <Card.Title style={{textAlign: 'center',fontSize: '1.5rem' }}>Please Login!</Card.Title>
-                <Form ClassName="form">
+                <Form className="form">
                   <Form.Group className="mb-3" controlId="formUsername">
                   <Form.Label>Username:</Form.Label>
                     <Form.Control type="text" onChange={e => setUsername(e.target.value)} required placeholder='Please enter your name'/>
