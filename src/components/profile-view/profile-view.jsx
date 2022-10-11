@@ -34,7 +34,7 @@ export class ProfileView extends React.Component {
     const token = localStorage.getItem("token");
     console.log(this.props);
     axios
-      .delete(
+      .put(
         `https://arthousemovies.herokuapp.com/users/${_id}/movies/${movie._id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       )
