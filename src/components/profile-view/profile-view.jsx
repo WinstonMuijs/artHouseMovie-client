@@ -30,12 +30,12 @@ export class ProfileView extends React.Component {
   }
 
   removeFavorite = (e, movie) => {
-    const _id = localStorage.getItem("_id");
+    const user = localStorage.getItem("user");
     const token = localStorage.getItem("token");
     console.log(this.props);
     axios
       .put(
-        `https://arthousemovies.herokuapp.com/users/${_id}/movies/${movie._id}`,
+        `https://arthousemovies.herokuapp.com/users/${user}/movies/${movie._id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       )
       .then((response) => {
@@ -80,11 +80,11 @@ export class ProfileView extends React.Component {
 
   updateUser = (e) => {
     e.preventDefault();
-    const _id = localStorage.getItem('_id');
+    const user = localStorage.getItem('user');
     const token = localStorage.getItem('token');
     axios
       .put(
-        `https://arthousemovie.herokuapp.com/users/${_id}`,
+        `https://arthousemovie.herokuapp.com/users/${user}`,
         {
           name: this.state.name,
           password: this.state.password,
@@ -103,12 +103,12 @@ export class ProfileView extends React.Component {
           birthday: response.data.birthday,
         });
 
-        localStorage.setItem("id", this.state._id);
+        localStorage.setItem("user", this.state.user);
         const data = response.data;
         console.log(data);
-        console.log(this.state._id);
+        console.log(this.state.user);
         alert("Profile is updated!");
-        window.open(`/users/${_id}`, "_self");
+        window.open(`/users/${user}`, "_self");
       })
       .catch(function (error) {
         console.log(error);
@@ -118,11 +118,11 @@ export class ProfileView extends React.Component {
 
   // Deregister
   onDeleteUser() {
-    const email = localStorage.getItem("email");
+    const user = localStorage.getItem("user");
     const token = localStorage.getItem("token");
 
     axios
-      .delete(`https://arthousemovie.herokuapp.com/users/${email}`, {
+      .delete(`https://arthousemovie.herokuapp.com/users/${user}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {

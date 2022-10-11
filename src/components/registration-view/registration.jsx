@@ -20,12 +20,12 @@ export function RegistrationView() {
       let isReq = true;
 
       if (!name) {
-        setValues({ ...values, usernameErr: "Username Required" });
+        setValues({ ...values, nameErr: "Username Required" });
         isReq = false;
       } else if (name.length < 5) {
           setValues({
           ...values,
-          usernameErr: "Username must be 5 characters long",
+          nameErr: "Username must be 5 characters long",
         });
         isReq = false;
       }
@@ -122,6 +122,6 @@ RegistrationView.propTypes = {
     name: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
-    birthday: PropTypes.string
+    birthday: PropTypes.date
   }),
 };

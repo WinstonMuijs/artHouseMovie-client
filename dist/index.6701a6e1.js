@@ -970,19 +970,12 @@ class MyFlixApplication extends _reactDefault.default.Component {
 // Finds the root of your app
 const root = _client.createRoot(document.getElementsByClassName('app-container')[0]);
 // Tells React to render your app in the root DOM element
-root.render(/*#__PURE__*/ _jsxRuntime.jsx(_reactDefault.default.StrictMode, {
+root.render(/*#__PURE__*/ _jsxRuntime.jsx(MyFlixApplication, {
     __source: {
         fileName: "src/index.jsx",
         lineNumber: 26
     },
-    __self: undefined,
-    children: /*#__PURE__*/ _jsxRuntime.jsx(MyFlixApplication, {
-        __source: {
-            fileName: "src/index.jsx",
-            lineNumber: 27
-        },
-        __self: undefined
-    })
+    __self: undefined
 }));
 
   $parcel$ReactRefreshHelpers$b058.postlude(module);
@@ -3772,37 +3765,19 @@ class MainView extends _reactDefault.default.Component {
             movies: [],
             directors: [],
             genres: [],
-            user: null,
-            users: []
+            user: null
         };
     }
     componentDidMount() {
         let accessToken = localStorage.getItem('token');
         if (accessToken !== null) {
             this.setState({
-                user: localStorage.getItem('user'),
-                userId: localStorage.getItem('user._id')
+                user: localStorage.getItem('user')
             });
             this.getMovies(accessToken);
             this.getDirectors(accessToken);
             this.getGenres(accessToken);
-            this.getUsers(accessToken);
-        // this.getUserId(accessToken)
         }
-    }
-    getUsers(token) {
-        _axiosDefault.default.get('https://arthousemovie.herokuapp.com/users', {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }).then((response)=>{
-            // Assign the result to the state
-            this.setState({
-                users: response.data
-            });
-        }).catch(function(error) {
-            console.log(error);
-        });
     }
     getMovies(token) {
         _axiosDefault.default.get('https://arthousemovie.herokuapp.com/movies', {
@@ -3871,7 +3846,7 @@ class MainView extends _reactDefault.default.Component {
         return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "src/components/mainview/main-view.jsx",
-                lineNumber: 143
+                lineNumber: 123
             },
             __self: this,
             children: [
@@ -3879,7 +3854,7 @@ class MainView extends _reactDefault.default.Component {
                     user: user,
                     __source: {
                         fileName: "src/components/mainview/main-view.jsx",
-                        lineNumber: 144
+                        lineNumber: 124
                     },
                     __self: this
                 }),
@@ -3887,7 +3862,7 @@ class MainView extends _reactDefault.default.Component {
                     className: "main-view justify-content-md-center",
                     __source: {
                         fileName: "src/components/mainview/main-view.jsx",
-                        lineNumber: 145
+                        lineNumber: 125
                     },
                     __self: this,
                     children: [
@@ -3914,7 +3889,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/mainview/main-view.jsx",
-                                lineNumber: 147
+                                lineNumber: 127
                             },
                             __self: this
                         }),
@@ -3929,7 +3904,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/mainview/main-view.jsx",
-                                lineNumber: 165
+                                lineNumber: 145
                             },
                             __self: this
                         }),
@@ -3955,7 +3930,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/mainview/main-view.jsx",
-                                lineNumber: 174
+                                lineNumber: 154
                             },
                             __self: this
                         }),
@@ -3978,7 +3953,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/mainview/main-view.jsx",
-                                lineNumber: 190
+                                lineNumber: 170
                             },
                             __self: this
                         }),
@@ -4001,7 +3976,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/mainview/main-view.jsx",
-                                lineNumber: 203
+                                lineNumber: 183
                             },
                             __self: this
                         }),
@@ -4022,7 +3997,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/mainview/main-view.jsx",
-                                lineNumber: 223
+                                lineNumber: 203
                             },
                             __self: this
                         })
@@ -7260,13 +7235,13 @@ function RegistrationView() {
         if (!name) {
             setValues({
                 ...values,
-                usernameErr: "Username Required"
+                nameErr: "Username Required"
             });
             isReq = false;
         } else if (name.length < 5) {
             setValues({
                 ...values,
-                usernameErr: "Username must be 5 characters long"
+                nameErr: "Username must be 5 characters long"
             });
             isReq = false;
         }
@@ -7544,7 +7519,7 @@ RegistrationView.propTypes = {
         name: _propTypesDefault.default.string.isRequired,
         password: _propTypesDefault.default.string.isRequired,
         email: _propTypesDefault.default.string.isRequired,
-        birthday: _propTypesDefault.default.string
+        birthday: _propTypesDefault.default.date
     })
 };
 var _c;
@@ -44902,7 +44877,7 @@ var _movieViewScss = require("./movie-view.scss");
 var _reactRouterDom = require("react-router-dom");
 class MovieView extends _reactDefault.default.Component {
     render() {
-        const { movie , director , onBackClick  } = this.props;
+        const { movie , onBackClick  } = this.props;
         return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Container, {
             className: "movie-view",
             __source: {
@@ -45115,7 +45090,7 @@ class MovieView extends _reactDefault.default.Component {
         }));
     }
 }
-MovieView.PropTypes = {
+MovieView.propTypes = {
     movie: _propTypesDefault.default.shape({
         title: _propTypesDefault.default.string.isRequired,
         description: _propTypesDefault.default.string.isRequired,
@@ -45777,10 +45752,10 @@ class ProfileView extends _reactDefault.default.Component {
         this.getUser(accessToken);
     }
     removeFavorite = (e, movie)=>{
-        const _id = localStorage.getItem("_id");
+        const user = localStorage.getItem("user");
         const token = localStorage.getItem("token");
         console.log(this.props);
-        _axiosDefault.default.put(`https://arthousemovies.herokuapp.com/users/${_id}/movies/${movie._id}`, {
+        _axiosDefault.default.put(`https://arthousemovies.herokuapp.com/users/${user}/movies/${movie._id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -45821,9 +45796,9 @@ class ProfileView extends _reactDefault.default.Component {
     };
     updateUser = (e)=>{
         e.preventDefault();
-        const _id = localStorage.getItem('_id');
+        const user = localStorage.getItem('user');
         const token = localStorage.getItem('token');
-        _axiosDefault.default.put(`https://arthousemovie.herokuapp.com/users/${_id}`, {
+        _axiosDefault.default.put(`https://arthousemovie.herokuapp.com/users/${user}`, {
             name: this.state.name,
             password: this.state.password,
             email: this.state.email,
@@ -45839,12 +45814,12 @@ class ProfileView extends _reactDefault.default.Component {
                 email: response.data.email,
                 birthday: response.data.birthday
             });
-            localStorage.setItem("id", this.state._id);
+            localStorage.setItem("user", this.state.user);
             const data = response.data;
             console.log(data);
-            console.log(this.state._id);
+            console.log(this.state.user);
             alert("Profile is updated!");
-            window.open(`/users/${_id}`, "_self");
+            window.open(`/users/${user}`, "_self");
         }).catch(function(error) {
             console.log(error);
             alert("Profile is Not updated!");
@@ -45852,9 +45827,9 @@ class ProfileView extends _reactDefault.default.Component {
     };
     // Deregister
     onDeleteUser() {
-        const email = localStorage.getItem("email");
+        const user = localStorage.getItem("user");
         const token = localStorage.getItem("token");
-        _axiosDefault.default.delete(`https://arthousemovie.herokuapp.com/users/${email}`, {
+        _axiosDefault.default.delete(`https://arthousemovie.herokuapp.com/users/${user}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
