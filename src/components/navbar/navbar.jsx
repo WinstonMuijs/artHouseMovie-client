@@ -30,7 +30,7 @@ export function Navbar({ user }) {
       <Navbar.Brand className="text-light">ArtHouseMovies</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
       <Navbar.Collapse id="responsive-navbar-nav">
-              <Nav className="ml-auto">
+          <Nav className="ml-auto">
           {isAuth() && <Nav.Link href="/">Home</Nav.Link>}
           {isAuth() && <Nav.Link  href={`/users/${user}`}>{user}</Nav.Link>}
 
