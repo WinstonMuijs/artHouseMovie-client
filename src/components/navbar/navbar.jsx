@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import { Container, Navbar, Nav, Button } from "react-bootstrap";
 
 
@@ -25,18 +25,25 @@ export function Navbar({ user }) {
 
   return (
     <>
-    <Navbar className="main-nav" expand="lg" bg="dark" variant="dark">
-      <Container>
-      <Navbar.Brand className="text-light">ArtHouseMovies</Navbar.Brand>
+    <Navbar
+      className="main-nav" 
+      expand="lg" 
+      bg="dark" 
+      variant="dark">
+        <Container>
+          <Navbar.Brand as={Link} to="/"
+          className="text-light">ArtHouseMovies</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
       <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ml-auto">
-          {isAuth() && <Nav.Link href="/">Home</Nav.Link>}
-          {isAuth() && <Nav.Link  href={`/users/${user}`}>{user}</Nav.Link>}
+          {isAuth() && <Nav.Link as={ Link } to="/" >Home</Nav.Link>}
+          {isAuth() && <Nav.Link  as={ Link } to={`/users/${user}`}>{user}</Nav.Link>}
 
-          {isAuth() && <Button onClick={onLoggedOut}>Logout</Button>}
-          {!isAuth() && <Nav.Link href="/">Sign-in</Nav.Link>}
-          {!isAuth() && <Nav.Link href="/register">Register</Nav.Link>}
+          {isAuth() && (<Button onClick={() => {onLoggedOut();}}>Logout</Button>)}
+
+          {!isAuth() && (<Nav.Link as={ Link } to="/">Sign-in</Nav.Link>)}
+
+          {!isAuth() && (<Nav.Link as={ Link } to="/register">Register</Nav.Link>)}
         </Nav>
         
       </Navbar.Collapse>

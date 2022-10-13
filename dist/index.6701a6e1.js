@@ -44625,6 +44625,7 @@ parcelHelpers.export(exports, "Navbar", ()=>Navbar
 var _jsxRuntime = require("react/jsx-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactRouterDom = require("react-router-dom");
 var _reactBootstrap = require("react-bootstrap");
 var _navbarScss = require("./navbar.scss");
 function Navbar({ user  }) {
@@ -44652,15 +44653,17 @@ function Navbar({ user  }) {
                 children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Container, {
                     __source: {
                         fileName: "src/components/navbar/navbar.jsx",
-                        lineNumber: 29
+                        lineNumber: 33
                     },
                     __self: this,
                     children: [
                         /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Navbar.Brand, {
+                            as: _reactRouterDom.Link,
+                            to: "/",
                             className: "text-light",
                             __source: {
                                 fileName: "src/components/navbar/navbar.jsx",
-                                lineNumber: 30
+                                lineNumber: 34
                             },
                             __self: this,
                             children: "ArtHouseMovies"
@@ -44669,7 +44672,7 @@ function Navbar({ user  }) {
                             "aria-controls": "responsive-navbar-nav",
                             __source: {
                                 fileName: "src/components/navbar/navbar.jsx",
-                                lineNumber: 31
+                                lineNumber: 36
                             },
                             __self: this
                         }),
@@ -44677,58 +44680,64 @@ function Navbar({ user  }) {
                             id: "responsive-navbar-nav",
                             __source: {
                                 fileName: "src/components/navbar/navbar.jsx",
-                                lineNumber: 32
+                                lineNumber: 37
                             },
                             __self: this,
                             children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Nav, {
                                 className: "ml-auto",
                                 __source: {
                                     fileName: "src/components/navbar/navbar.jsx",
-                                    lineNumber: 33
+                                    lineNumber: 38
                                 },
                                 __self: this,
                                 children: [
                                     isAuth() && /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Nav.Link, {
-                                        href: "/",
+                                        as: _reactRouterDom.Link,
+                                        to: "/",
                                         __source: {
                                             fileName: "src/components/navbar/navbar.jsx",
-                                            lineNumber: 34
+                                            lineNumber: 39
                                         },
                                         __self: this,
                                         children: "Home"
                                     }),
                                     isAuth() && /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Nav.Link, {
-                                        href: `/users/${user}`,
+                                        as: _reactRouterDom.Link,
+                                        to: `/users/${user}`,
                                         __source: {
                                             fileName: "src/components/navbar/navbar.jsx",
-                                            lineNumber: 35
+                                            lineNumber: 40
                                         },
                                         __self: this,
                                         children: user
                                     }),
                                     isAuth() && /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                                        onClick: onLoggedOut,
+                                        onClick: ()=>{
+                                            onLoggedOut();
+                                        },
                                         __source: {
                                             fileName: "src/components/navbar/navbar.jsx",
-                                            lineNumber: 37
+                                            lineNumber: 42
                                         },
                                         __self: this,
                                         children: "Logout"
                                     }),
                                     !isAuth() && /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Nav.Link, {
-                                        href: "/",
+                                        as: _reactRouterDom.Link,
+                                        to: "/",
                                         __source: {
                                             fileName: "src/components/navbar/navbar.jsx",
-                                            lineNumber: 38
+                                            lineNumber: 44
                                         },
                                         __self: this,
                                         children: "Sign-in"
                                     }),
                                     !isAuth() && /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Nav.Link, {
-                                        href: "/register",
+                                        as: _reactRouterDom.Link,
+                                        to: "/register",
                                         __source: {
                                             fileName: "src/components/navbar/navbar.jsx",
-                                            lineNumber: 39
+                                            lineNumber: 46
                                         },
                                         __self: this,
                                         children: "Register"
@@ -44751,7 +44760,7 @@ $RefreshReg$(_c, "Navbar");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap":"h2YVd","./navbar.scss":"eqSoH","@parcel/transformer-js/src/esmodule-helpers.js":"6gzAh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"lRSmJ"}],"eqSoH":[function() {},{}],"6EiBJ":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap":"h2YVd","./navbar.scss":"eqSoH","@parcel/transformer-js/src/esmodule-helpers.js":"6gzAh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"lRSmJ","react-router-dom":"cpyQW"}],"eqSoH":[function() {},{}],"6EiBJ":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$4249 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
