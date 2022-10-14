@@ -5,13 +5,13 @@ import axios from 'axios';
 
 
 
-export function RegistrationView(props) {
+export function RegistrationView() {
 
   const [name, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [birthday, setBirthday] = useState('');
-  // Declare hook for each input
+
   const [nameErr, setUsernameErr] = useState('');
   const [passwordErr, setPasswordErr] = useState('');
   const [emailErr, setEmailErr] = useState('');
@@ -51,12 +51,14 @@ export function RegistrationView(props) {
     const isReq = validate();
     if (isReq) {
       axios
-        .post("https://arthousmovie.herokuapp.com/users", {
+        .post("https://glacial-ocean-19756.herokuapp.com/users", 
+        {
           name: name,
           password: password,
           email: email,
           birthday: birthday,
-        })
+        }
+        )
         .then((response) => {
           const data = response.data;
           console.log(data);
@@ -118,7 +120,6 @@ export function RegistrationView(props) {
 
 RegistrationView.propTypes = {
   register: PropTypes.shape({
-    id: PropTypes.number,
     name: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,

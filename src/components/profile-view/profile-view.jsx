@@ -1,3 +1,4 @@
+import React, {useState} from 'react';
 import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -35,7 +36,7 @@ export class ProfileView extends React.Component {
     console.log(this.props);
     axios
       .put(
-        `https://arthousemovies.herokuapp.com/users/${user}/movies/${movie._id}`,
+        `https://glacial-ocean-19756.herokuapp.com/users/${user}/movies/${movie._id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       )
       .then((response) => {
@@ -60,7 +61,7 @@ export class ProfileView extends React.Component {
   getUser = (token) => {
     const user = localStorage.getItem('user');
     axios
-      .get(`https://arthousemovie.herokuapp.com/users/${user}`, {
+      .get(`https://glacial-ocean-19756.herokuapp.com/users/${user}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
@@ -80,11 +81,11 @@ export class ProfileView extends React.Component {
 
   updateUser = (e) => {
     e.preventDefault();
-    const user = localStorage.getItem('user');
+    const userId = localStorage.getItem('user._id');
     const token = localStorage.getItem('token');
     axios
       .put(
-        `https://arthousemovie.herokuapp.com/users/${user}`,
+        `https://glacial-ocean-19756.herokuapp.com/users/${userId}`,
         {
           name: this.state.name,
           password: this.state.password,
@@ -103,12 +104,12 @@ export class ProfileView extends React.Component {
           birthday: response.data.birthday,
         });
 
-        localStorage.setItem("user", this.state.user);
+        localStorage.setItem("userId", this.state._id);
         const data = response.data;
         console.log(data);
-        console.log(this.state.user);
+        console.log(this.state.user._id);
         alert("Profile is updated!");
-        window.open(`/users/${user}`, "_self");
+        window.open(`/users/${user._id}`, "_self");
       })
       .catch(function (error) {
         console.log(error);
@@ -122,7 +123,7 @@ export class ProfileView extends React.Component {
     const token = localStorage.getItem("token");
 
     axios
-      .delete(`https://arthousemovie.herokuapp.com/users/${user}`, {
+      .delete(`https://glacial-ocean-19756.herokuapp.com/users/${user}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {

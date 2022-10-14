@@ -12,7 +12,6 @@ export class DirectorCard extends React.Component {
       <Card>
       <Card.Body>
           <Card.Title>Director:</Card.Title>
-          <Card.Text>{director._id}</Card.Text>
           <Card.Text className='fullname'>{director.name}</Card.Text>
           <Card.Text>{director.bio}</Card.Text>
           <Card.Text>{director.birthyear}</Card.Text>

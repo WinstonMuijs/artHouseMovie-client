@@ -13,7 +13,6 @@ export class GenreCard extends React.Component {
       <Card>
       <Card.Body>
           <Card.Title>Genre:</Card.Title>
-          <Card.Text>{genre._id}</Card.Text>
           <Card.Text>{genre.name}</Card.Text>
           <Card.Text>{genre.description}</Card.Text>
           <Button className='btn' onClick={() => { onBackClick(); }}>Back</Button>
@@ -25,7 +24,6 @@ export class GenreCard extends React.Component {
 
 GenreCard.propTypes = {
   genre: PropTypes.shape({
-    _id: PropTypes.number,
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired
   }).isRequired

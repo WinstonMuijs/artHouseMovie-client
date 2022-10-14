@@ -39,7 +39,7 @@ export function LoginView(props) {
   /* Send a request to the server for authentication */
     const isReq = validate();
     if(isReq) {
-      axios.post('https://arthousemovie.herokuapp.com/login', {
+      axios.post('https://glacial-ocean-19756.herokuapp.com/login', {
       name: name,
       password: password
       })

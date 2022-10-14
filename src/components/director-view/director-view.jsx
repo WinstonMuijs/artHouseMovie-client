@@ -10,13 +10,6 @@ export class DirectorView extends React.Component {
 
         return (
         <Container className="movie-view">
-         <Row>
-         <Col></Col>
-            <Col className='movie-view'>
-                <span>{director._id}</span>
-            </Col>
-            <Col></Col>
-          </Row>
           <Row>
             <Col className='movie-view'>
                 <span className='label'>Name : </span>
