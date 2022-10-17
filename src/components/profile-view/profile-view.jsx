@@ -165,7 +165,7 @@ export class ProfileView extends React.Component {
 
   render() {
     const { favoriteMovies, name, password, email, birthday} = this.state;
-
+    const favoriteMovieObjects = this.props.movies.filter(movie => favoriteMovies.includes(movie._id));
     return (
       <Container>
         <Row>
@@ -265,14 +265,14 @@ export class ProfileView extends React.Component {
               </Col>
             </Row>
             <Row>
-              {favoriteMovies.map((imageURL, movie, title, _id) => {
+              {favoriteMovieObjects.map(( movie ) => {
                 return (
                 <Row>
                   <Col key={movie._id} className="fav-movie">
                     <Card>
                       <Link to={`/movies/${movie._id}`}>
-                        <Card.Img src={movie.imageURL} alt={title} />
-                        <Card.Title>{title}</Card.Title>
+                        <Card.Img src={movie.imageURL} crossOrigin={'anonymous'} alt={movie.title} />
+                        <Card.Title>{movie.title}</Card.Title>
                       </Link>
                         <Button
                             className="remove"

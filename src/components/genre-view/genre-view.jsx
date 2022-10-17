@@ -6,13 +6,13 @@ import {Container, Card, Button} from 'react-bootstrap';
 export class GenreView extends React.Component {
 
     render() {
-       const {genre, onBackClick, movie} = this.props;
+       const { genre, onBackClick} = this.props;
        return (
     
         <Container>
         <Card className="genre-view">
-          <Card.Header className="genre-view-header">Genre</Card.Header>
-          <Card.Body className="genre-view-title">{genre.name}</Card.Body>
+          <Card.Header className="genre-view">Genre</Card.Header>
+          <Card.Body className="genre-view-name">{genre.name}</Card.Body>
           <Card.Body>{genre.description}</Card.Body>
           <Card.Footer>
             <Button
@@ -31,7 +31,7 @@ export class GenreView extends React.Component {
 }
 GenreView.proptypes = {
 genre: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired
+    name: PropTypes.string,
+    description: PropTypes.string
 }).isRequired,
 };

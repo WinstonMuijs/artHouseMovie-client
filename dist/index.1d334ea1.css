@@ -9,7 +9,7 @@ html {
 
 .app-container {
   color: #000;
-  background-color: #000;
+  background-color: black;
 }
 
 .btn.btn-primary {
@@ -20,9 +20,5 @@ html {
 
 .btn1 {
   background-color: greenyellow;
-}
-
-Card {
-  color: #000;
 }
 /*# sourceMappingURL=index.1d334ea1.css.map */

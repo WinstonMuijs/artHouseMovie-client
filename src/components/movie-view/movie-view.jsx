@@ -1,6 +1,5 @@
 import React from 'react'; 
-import PropTypes from 'prop-types';
-import { Container, Row, Col, Button, Card } from 'react-bootstrap';
+import { Container, Button, Card } from 'react-bootstrap';
 import axios from 'axios';
 
 import './movie-view.scss';
@@ -13,7 +12,35 @@ export class MovieView extends React.Component {
 
     constructor() {
         super();
-        this.state= {};
+        this.state= {
+          movies : [],
+        };
+    }
+
+    componentDidMount() {
+      let accessToken = localStorage.getItem('token');
+      if (accessToken !== null) {
+        this.setState({
+          user: localStorage.getItem('user')
+        });
+        this.getMovies(accessToken);
+      }
+    }
+
+    getMovies(token) {
+      console.log(token);
+      axios.get('https://glacial-ocean-19756.herokuapp.com/movies', {
+        headers: { Authorization:`Bearer ${token}`}
+      })
+      .then(response => {
+    // Assign the result to the state
+        this.setState({
+          movies: response.data
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     }
 
     addFavoriteMovie(e) {
@@ -33,9 +60,9 @@ export class MovieView extends React.Component {
             alert(`${movie.title} successfully added to your favorites`);
           })
          
-          .then((res) => {
-            document.location.reload(true);
-          })
+          // .then((res) => {
+          //   document.location.reload(true);
+          // })
           .catch((error) => {
             alert(`${movie.title} was not added to favorites.` + error);
           });
