@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col, Button, Card } from 'react-bootstrap';
+import axios from 'axios';
 
 import './movie-view.scss';
 
@@ -9,62 +9,71 @@ import { Link } from "react-router-dom";
 
 export class MovieView extends React.Component {
 
+    constructor() {
+        super();
+        this.state= {};
+    }
+
+    addFavoriteMovie(e) {
+        const { movie } = this.props;
+        e.preventDefault();
+        axios
+          .post(
+            `https://glacial-ocean-19756.herokuapp.com/users/${localStorage.getItem(
+              "user"
+            )}/movies/${movie._id}`,
+            { name: localStorage.getItem("user") },
+            {
+              headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+            }
+          )
+          .then((res) => {
+            alert(`${movie.title} successfully added to your favorites`);
+          })
+         
+          .then((res) => {
+            document.location.reload(true);
+          })
+          .catch((error) => {
+            alert(`${movie.title} was not added to favorites.` + error);
+          });
+    }
+
     render() {
         const { movie, onBackClick } = this.props;
 
         return (
-        <Container className="movie-view">
-         <Row>
-         <Col></Col>
-            <Col className='movie-poster'>
-                <img src={movie.imageURL} crossOrigin={'anonymous'}
+        <Container>
+        <Card className="movie-view">
+         <Card.Header>
+                <Card.Img src={movie.imageURL} crossOrigin={'anonymous'}
                 />
-            </Col>
-            <Col></Col>
-          </Row>
-          <Row>
-            <Col className='movie-title'>
-                <span className='label'>Title : </span>
+          </Card.Header>
+          <Card.Body className='movie-view'>
+                <h1 className='label'>{movie.title}</h1>
                 <span className='value'>{movie.title}</span>
-            </Col>
-          </Row>
-          <Row>
-            <Col className='movie-description'>
+          </Card.Body>
+          <Card.Body className='movie-view'>
                 <span className='label'>Description : </span>
                 <span className='value'>{movie.description}</span>
-                </Col> 
-            </Row>
-             <Row>
-              <Col className='movie-genre'>
-                <Link to={`/genres/${movie.genre}`}>
+          </Card.Body>
+          <Card.Body className='movie-view'>
+                <Link to={`/genres/${movie.genre.name}`}>
                   <Button className='btn'>Genre</Button>
                 </Link>
-              </Col>
-            </Row>
-            <Row>
-              <Col className='movie-director'>
-                <Link to={`/directors/${movie.director}`}>
+          </Card.Body>
+          <Card.Body className='movie-director'>
+                <Link to={`/directors/${movie.director.name}`}>
                   <Button className='btn'>Director</Button>
                 </Link>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
+          </Card.Body>
+          <Card.Footer>
               <Button className='btn' onClick={() => { onBackClick(); }}>Back</Button>
-              </Col>
-            </Row>
+              <Button style={{marginLeft:"200px"}} variant="warning" className="favorite-button" value={movie._id} onClick={(e)=> this.addFavoriteMovie(e, movie)}>Add to Favorites</Button>
+          </Card.Footer>
+         </Card>
         </Container>
         );
       }
 }
 
-
-MovieView.propTypes = {
-  movie: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    imageURL: PropTypes.string.isRequired,
-    genre: PropTypes.number.isRequired,
-    director: PropTypes.number.isRequired
-  }).isRequired
-};

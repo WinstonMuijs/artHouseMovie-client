@@ -12,11 +12,12 @@ export class MovieCard extends React.Component {
 
     return (
       <Card className='moviecard'>
+        <CardImg src={movie.imageURL} crossOrigin={'anonymous'}/>
         <Card.Body className='moviebody'>
           <Card.Title>{movie.title}</Card.Title>
           <Card.Text>{movie.description}</Card.Text>
           <Link to={`/movies/${movie._id}`}>
-            <Button variant="link"><CardImg src={movie.imageURL} crossOrigin={'anonymous'}/></Button>
+            <Button variant="link">Open</Button>
           </Link>
         </Card.Body>
       </Card>

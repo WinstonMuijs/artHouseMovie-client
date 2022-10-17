@@ -1,4 +1,3 @@
-import React, {useState} from 'react';
 import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -16,7 +15,6 @@ export class ProfileView extends React.Component {
   constructor() {
     super();
     this.state = {
-      _id: null,
       name: null,
       password: null,
       email: null,
@@ -31,12 +29,12 @@ export class ProfileView extends React.Component {
   }
 
   removeFavorite = (e, movie) => {
-    const user = localStorage.getItem("user");
+    const name = localStorage.getItem("user");
     const token = localStorage.getItem("token");
     console.log(this.props);
     axios
-      .put(
-        `https://glacial-ocean-19756.herokuapp.com/users/${user}/movies/${movie._id}`,
+      .delete(
+        `https://glacial-ocean-19756.herokuapp.com/users/${name}/movies/${movie._id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       )
       .then((response) => {
@@ -59,14 +57,13 @@ export class ProfileView extends React.Component {
   }
 
   getUser = (token) => {
-    const user = localStorage.getItem('user');
+    const name = localStorage.getItem('user');
     axios
-      .get(`https://glacial-ocean-19756.herokuapp.com/users/${user}`, {
+      .get(`https://glacial-ocean-19756.herokuapp.com/users/${name}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
         this.setState({
-          _id: response.data._id,
           name: response.data.name,
           password: response.data.password,
           email: response.data.email,
@@ -81,11 +78,11 @@ export class ProfileView extends React.Component {
 
   updateUser = (e) => {
     e.preventDefault();
-    const userId = localStorage.getItem('user._id');
+    const name = localStorage.getItem('user');
     const token = localStorage.getItem('token');
     axios
       .put(
-        `https://glacial-ocean-19756.herokuapp.com/users/${userId}`,
+        `https://glacial-ocean-19756.herokuapp.com/users/${name}`,
         {
           name: this.state.name,
           password: this.state.password,
@@ -104,12 +101,11 @@ export class ProfileView extends React.Component {
           birthday: response.data.birthday,
         });
 
-        localStorage.setItem("userId", this.state._id);
+        localStorage.setItem("user", this.state.name);
         const data = response.data;
         console.log(data);
-        console.log(this.state.user._id);
         alert("Profile is updated!");
-        window.open(`/users/${user._id}`, "_self");
+        window.open(`/users/${name}`, "_self");
       })
       .catch(function (error) {
         console.log(error);
@@ -119,11 +115,11 @@ export class ProfileView extends React.Component {
 
   // Deregister
   onDeleteUser() {
-    const user = localStorage.getItem("user");
+    const name = localStorage.getItem("user");
     const token = localStorage.getItem("token");
 
     axios
-      .delete(`https://glacial-ocean-19756.herokuapp.com/users/${user}`, {
+      .delete(`https://glacial-ocean-19756.herokuapp.com/users/${name}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
@@ -168,7 +164,7 @@ export class ProfileView extends React.Component {
   }
 
   render() {
-    const { favoriteMovies, name, email, birthday} = this.state;
+    const { favoriteMovies, name, password, email, birthday} = this.state;
 
     return (
       <Container>
@@ -188,8 +184,7 @@ export class ProfileView extends React.Component {
           <Col>
             <Card className="update-inputs">
               <Card.Header>Update Profile</Card.Header>
-              <Card.Body>
-                <Card.Text>
+ 
                   <Form
                     className="update-form"
                     onSubmit={(e) =>
@@ -244,21 +239,20 @@ export class ProfileView extends React.Component {
                       <Button
                         variant="warning"
                         type="submit"
-                        onClick={() => this.updateUser()}
+                        onClick={(e) => this.updateUser(e)}
                       >
                         Update User
                       </Button>
                       <Button
                         className="delete-button"
                         variant="danger"
-                        onClick={() => this.onDeleteUser()}
+                        onClick={(e) => this.onDeleteUser(e)}
                       >
                         Delete User
                       </Button>
                     </Form.Group>
                   </Form>
-                </Card.Text>
-              </Card.Body>
+        
             </Card>
           </Col>
         </Row>
@@ -271,19 +265,19 @@ export class ProfileView extends React.Component {
               </Col>
             </Row>
             <Row>
-              {favoriteMovies.map((imageURL,movie, title, _id) => {
+              {favoriteMovies.map((imageURL, movie, title, _id) => {
                 return (
                 <Row>
-                  <Col key={_id} className="fav-movie">
+                  <Col key={movie._id} className="fav-movie">
                     <Card>
                       <Link to={`/movies/${movie._id}`}>
-                        <Card.Img src={imageURL} alt={title} />
+                        <Card.Img src={movie.imageURL} alt={title} />
                         <Card.Title>{title}</Card.Title>
                       </Link>
                         <Button
                             className="remove"
                             variant="secondary"
-                            onClick={() => this.removeFavorite(e, movie)}
+                            onClick={(e) => this.removeFavorite(e, movie)}
                         >
                         Remove from the list
                         </Button>
