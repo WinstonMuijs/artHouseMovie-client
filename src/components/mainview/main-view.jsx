@@ -155,7 +155,7 @@ export class MainView extends React.Component {
 
             if(!movies) return <div className="main-view"/>;
 
-            return <GenreView genre={movies.find(m => m.genre.name === match.params.name).genre} onBackClick={() => history.goBack()}/>
+            return <GenreView genre={movies.find(m => m.genre.name === match.params.name)} onBackClick={() => history.goBack()}/>
           }}/>
 
 
