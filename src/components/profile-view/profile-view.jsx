@@ -10,10 +10,10 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 
-import { connect } from 'react-redux';
-import { createUser, updateUser, deleteUser, removeFavmovie} from '../../actions/actions'
+// import { connect } from 'react-redux';
+// import { createUser, updateUser, deleteUser, removeFavmovie} from '../../actions/actions'
 
-class ProfileView extends React.Component {
+export class ProfileView extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -84,7 +84,7 @@ class ProfileView extends React.Component {
     const name = localStorage.getItem('user');
     const token = localStorage.getItem('token');
 
-    this.props.dispatch({type: 'UPDATE_USER'});
+    // this.props.dispatch({type: 'UPDATE_USER'});
 
     axios
       .put(
@@ -124,7 +124,7 @@ class ProfileView extends React.Component {
     const name = localStorage.getItem("user");
     const token = localStorage.getItem("token");
 
-    this.props.dispatch({type: 'DELETE_USER'});    
+    // this.props.dispatch({type: 'DELETE_USER'});    
 
 
     axios
@@ -173,7 +173,6 @@ class ProfileView extends React.Component {
   }
 
   render() {
-    const { movies, user } = this.props;
     const { favoriteMovies, name, password, email, birthday} = this.state;
     const favoriteMovieObjects = this.props.movies.filter(movie => favoriteMovies.includes(movie._id));
     return (
@@ -303,16 +302,17 @@ class ProfileView extends React.Component {
     );
   }
 }
-  
-const mapStateToProps = state => ({
-  name: state.name,
-  password: state.password,
-  email: state.email,
-  birthday: state.birthday,
-  favoriteMovies: state.favoriteMovies,movies: state.movies
-});
 
-export default connect(mapStateToProps, {updateUser, deleteUser, removeFavmovie})(ProfileView);
+  
+// const mapStateToProps = state => ({
+//   name: state.name,
+//   password: state.password,
+//   email: state.email,
+//   birthday: state.birthday,
+//   favoriteMovies: state.favoriteMovies,movies: state.movies
+// });
+
+// export default connect(mapStateToProps, {updateUser, deleteUser, removeFavmovie})(ProfileView);
 
 
     
