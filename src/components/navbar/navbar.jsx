@@ -4,7 +4,7 @@ import { Container, Navbar, Nav, Button } from "react-bootstrap";
 
 
 
-import "./navbar.scss";
+
 
 export function Navbar({ user }) {
   const onLoggedOut = () => {

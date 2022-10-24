@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {Form, Button, FormGroup, Container, Card, CardGroup, Col , Row} from 'react-bootstrap';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { createUser} from '../../actions/actions';
 
 
 
@@ -48,6 +50,8 @@ export function RegistrationView() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    this.props.dispatch({type: 'CREATE_USER'});
+
     const isReq = validate();
     if (isReq) {
       axios
@@ -126,3 +130,12 @@ RegistrationView.propTypes = {
     birthday: PropTypes.date
   }),
 };
+
+const mapStateToProps = state => ({
+  name: state.name,
+  password: state.password,
+  email: state.email,
+  birthday: state.birthday
+})
+
+export default connect(mapStateToProps, {createUser})(RegistrationView);

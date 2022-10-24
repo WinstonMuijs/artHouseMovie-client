@@ -6,7 +6,7 @@ import {Container, Card, Button} from 'react-bootstrap';
 export class DirectorView extends React.Component {
 
     render() {
-       const {movie, director, onBackClick} = this.props;
+       const { director, onBackClick} = this.props;
        return (
     
         <Container>
