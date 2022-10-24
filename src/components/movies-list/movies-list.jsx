@@ -2,7 +2,9 @@ import React from "react";
 import { Col }  from "react-bootstrap/Col";
 import { connect } from "react-redux";
 
-import VisibilityFilterInput from "../visibility-filter-input/visibility-filter-input";
+// import VisibilityFilterInput from "../visibility-filter-input/visibility-filter-input";
+
+import SearchBar from '../search-bar/search-bar';
 
 import { MovieCard } from '../movie-card/movie-card';
 
@@ -22,7 +24,7 @@ function MoviesList(props) {
 
     return <>
     <Col md={12} style={{ margin: '1em'}}>
-        <VisibilityFilterInput visibilityFilter={visibilityFilter} />
+        <SearchBar visibilityFilter={visibilityFilter} />
     </Col>
     {filteredMovies.map(m => (
         <Col md={3} key={m._id}>
