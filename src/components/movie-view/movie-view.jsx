@@ -1,8 +1,8 @@
 import React from 'react'; 
 import { Container, Button, Card } from 'react-bootstrap';
 import axios from 'axios';
-import { connect} from 'react-redux';
-import { SET_FAVMOVIE} from "../../actions/actions";
+// import { connect} from 'react-redux';
+// import { SET_FAVMOVIE} from "../../actions/actions";
 
 import { Link } from "react-router-dom";
 
@@ -13,7 +13,7 @@ export class MovieView extends React.Component {
     constructor() {
         super();
         this.state= {
-          // movies : [],
+          movies : [],
         };
     }
 
@@ -44,11 +44,11 @@ export class MovieView extends React.Component {
     }
 
     addFavoriteMovie(e) {
-        // const { movie } = this.props;
+        const { movie } = this.props;
 
         e.preventDefault();
 
-        this.props.dispatch({type: 'SET_FAVMOVIE'});
+        // this.props.dispatch({type: 'SET_FAVMOVIE'});
 
         axios
           .post(
@@ -102,7 +102,7 @@ export class MovieView extends React.Component {
           </Card.Body>
           <Card.Footer>
               <Button className='btn' onClick={() => { onBackClick(); }}>Back</Button>
-              <Button style={{marginLeft:"200px"}} variant="warning" className="favorite-button" value={movie._id} onClick={(e)=> this.addFavoriteMovie(e, /*movie*/)}>Add to Favorites</Button>
+              <Button style={{marginLeft:"200px"}} variant="warning" className="favorite-button" value={movie._id} onClick={(e)=> this.addFavoriteMovie(e, movie)}>Add to Favorites</Button>
           </Card.Footer>
          </Card>
         </Container>
@@ -110,8 +110,8 @@ export class MovieView extends React.Component {
       }
 }
 
-const mapStateToProps = state => ({
-  favoriteMovies: state.favoriteMovies
-});
+// const mapStateToProps = state => ({
+//   favoriteMovies: state.favoriteMovies
+// });
 
-export default connect(mapStateToProps)(MovieView);
+// export default connect(mapStateToProps)(MovieView);
