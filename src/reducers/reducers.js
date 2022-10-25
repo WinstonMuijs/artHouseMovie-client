@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import { SET_FILTER, SET_MOVIES } from '../actions/actions';
+import { SET_FILTER, SET_MOVIES, CREATE_USER } from '../actions/actions';
 
 function visibilityFilter(state = '', action) {
   switch (action.type) {
@@ -20,23 +20,23 @@ function movies(state = [], action) {
   }
 }
 
-const moviesApp = combineReducers({
-  visibilityFilter,
-  movies
-});
+// const moviesApp = combineReducers({
+//   visibilityFilter,
+//   movies
+// });
 
-export default moviesApp;
+// export default moviesApp;
 
-// function users(state={}, action) {
-//     switch(action.type) {
-//         case CREATE_USER:
-//             return {
-//                 ...state,
-//                 name: action.name,
-//                 password: action.password,
-//                 email: action.email,
-//                 birthday: action.birthday,
-//                 };
+function users(state={}, action) {
+    switch(action.type) {
+        case CREATE_USER:
+            return {
+                ...state,
+                name: action.name,
+                password: action.password,
+                email: action.email,
+                birthday: action.birthday,
+                };
         
 //         case UPDATE_USER: 
 //                 return {
@@ -51,10 +51,10 @@ export default moviesApp;
 //                  return state.map((user, index) => (index===action.index) ? {...user, deleted: !user.deleted} : user)
                     
                  
-//         default: return state;
+        default: return state;
 
-//     }
-// }
+    }
+}
 
 
 // function favoriteMovies(state=[], action) {
@@ -78,13 +78,13 @@ export default moviesApp;
 // }
 
 
-// const moviesApp = combineReducers({
-//     visibilityFilter,
-//     movies,
-//     // users,
-//     // favoriteMovies
+const moviesApp = combineReducers({
+    visibilityFilter,
+    movies,
+    users,
+    // favoriteMovies
 
-// })
+})
 
 
-// export default moviesApp;
+export default moviesApp;
