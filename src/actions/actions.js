@@ -1,5 +1,13 @@
 export const SET_MOVIES = 'SET_MOVIES';
 export const SET_FILTER = 'SET_FILTER';
+
+export function setMovies(value) {
+  return { type: SET_MOVIES, value };
+}
+
+export function setFilter(value) {
+  return { type: SET_FILTER, value };
+}
 // export const CREATE_USER = 'CREATE_USER';
 // export const UPDATE_USER = 'UPDATE_USER';
 // export const DELETE_USER = 'DELETE_USER';
@@ -7,13 +15,6 @@ export const SET_FILTER = 'SET_FILTER';
 // export const REMOVE_FAVMOVIE = 'REMOVE_FAVMOVIE';
 
 
-export function setMovies(value) {
-    return { type: SET_MOVIES, value };
-}
-
-export function setFilter(value) {
-    return { type: SET_FILTER, value };
-}
 
 // export function createUser(text) {
 //     return { type: CREATE_USER, text };
