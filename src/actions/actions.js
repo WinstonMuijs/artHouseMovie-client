@@ -8,7 +8,7 @@ export function setMovies(value) {
 export function setFilter(value) {
   return { type: SET_FILTER, value };
 }
-// export const CREATE_USER = 'CREATE_USER';
+export const CREATE_USER = 'CREATE_USER';
 // export const UPDATE_USER = 'UPDATE_USER';
 // export const DELETE_USER = 'DELETE_USER';
 // export const SET_FAVMOVIE = 'SET_FAVMOVIE';
@@ -16,9 +16,9 @@ export function setFilter(value) {
 
 
 
-// export function createUser(text) {
-//     return { type: CREATE_USER, text };
-// }
+export function createUser(text) {
+    return { type: CREATE_USER, text };
+}
 
 // export function updateUser(text) {
 //     return { type: UPDATE_USER, text };
