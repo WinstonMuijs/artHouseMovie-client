@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Row, Col, Container} from 'react-bootstrap';
+import { Row, Col} from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
@@ -174,10 +174,9 @@ class MainView extends React.Component {
   }
 }
 
+
 let mapStateToProps = state => {
-  return { 
-    movies: state.movies
-  };
+  return { movies: state.movies }
 }
 
 export default connect(mapStateToProps, { setMovies } )(MainView);
