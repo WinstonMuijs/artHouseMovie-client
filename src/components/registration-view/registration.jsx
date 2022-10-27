@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {Form, Button, FormGroup, Container, Card, CardGroup, Col , Row} from 'react-bootstrap';
 import axios from 'axios';
-import { connect } from 'react-redux';
-import { createUser} from '../../actions/actions';
+// import { connect } from 'react-redux';
+// import { createUser} from '../../actions/actions';
 
 
 
@@ -50,7 +50,7 @@ export function RegistrationView() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    this.props.dispatch({type: 'CREATE_USER'});
+    // this.props.dispatch({type: 'CREATE_USER'});
 
     const isReq = validate();
     if (isReq) {
@@ -79,10 +79,10 @@ export function RegistrationView() {
     return (
         <Container>
           <Row>
-            <Col>
+            <Col sm={12}>
               <CardGroup>
                 <Card>
-                <Card.Body>
+                  <Card.Body>
                   <Card.Title>Please Register</Card.Title>
                     <Form>
                       <FormGroup>
@@ -90,7 +90,7 @@ export function RegistrationView() {
                         <Form.Control type="text" value={name} onChange={(e) => setUsername(e.target.value)} required placeholder='Enter a username' />
                         {nameErr && < p>{nameErr}</p>}
                       </FormGroup>
-                     <Form.Group className="mb-3" controlId="formPassword">
+                      <Form.Group className="mb-3" controlId="formPassword">
                         <Form.Label>Password:</Form.Label>
                         <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength="6" placeholder='Please enter a password with 6 or more characters'/>
                         {passwordErr && <p>{passwordErr}</p>}
@@ -110,11 +110,9 @@ export function RegistrationView() {
                       </Form.Group>
                       <Button variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
                     </Form>
-
-                  </Card.Body>
+                    </Card.Body>
                 </Card>
               </CardGroup>
-              
             </Col>
           </Row>
         </Container>
@@ -131,11 +129,11 @@ RegistrationView.propTypes = {
   }),
 };
 
-const mapStateToProps = state => ({
-  name: state.name,
-  password: state.password,
-  email: state.email,
-  birthday: state.birthday
-})
+// const mapStateToProps = (state) => ({
+//   name: state.name,
+//   password: state.password,
+//   email: state.email,
+//   birthday: state.birthday
+// })
 
-export default connect(mapStateToProps, {createUser})(RegistrationView);
+// export default connect(mapStateToProps, {createUser})(RegistrationView);
