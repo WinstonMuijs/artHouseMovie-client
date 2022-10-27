@@ -178,7 +178,7 @@ export class ProfileView extends React.Component {
     return (
       <Container>
         <Row>
-          <Col>
+          <Col sm={12} md={12}>
             <Card className="user-profile">
               <Card.Header>User Profile</Card.Header>
               <Card.Body>
@@ -190,7 +190,8 @@ export class ProfileView extends React.Component {
               </Card.Body>
             </Card>
           </Col>
-          <Col>
+          <Col></Col>
+          <Col sm={12} md={12}>
             <Card className="update-inputs">
               <Card.Header>Update Profile</Card.Header>
  
@@ -280,7 +281,7 @@ export class ProfileView extends React.Component {
                   <Col key={movie._id} className="fav-movie">
                     <Card>
                       <Link to={`/movies/${movie._id}`}>
-                        <Card.Img src={movie.imageURL} crossOrigin={'anonymous'} alt={movie.title} />
+                        <img src={movie.imageURL} crossOrigin={'anonymous'} alt={movie.title} width="300" height="450" />
                         <Card.Title>{movie.title}</Card.Title>
                       </Link>
                         <Button
