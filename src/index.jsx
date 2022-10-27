@@ -27,17 +27,15 @@ class MyFlixApplication extends React.Component {
 }
 
 // Finds the root of your app
-// const root = ReactDOM.createRoot(document.getElementsByClassName('app-container')[0]);
+const root = ReactDOM.createRoot(document.getElementsByClassName('app-container')[0]);
 
 // Tells React to render your app in the root DOM element
-// root.render(
-//   <React.StrictMode>
-//     <MyFlixApplication/>
-//   </React.StrictMode>
-// );
+root.render(
+  <MyFlixApplication/>
+);
 
 // Find the root of our app
-const container = document.getElementsByClassName('app-container')[0];
+// const container = document.getElementsByClassName('app-container')[0];
 
 // Tell React to render our app in the root DOM element
-ReactDOM.render(React.createElement(MyFlixApplication), container);
+// ReactDOM.render(React.createElement(MyFlixApplication), container);

@@ -984,17 +984,18 @@ class MyFlixApplication extends _reactDefault.default.Component {
     }
 }
 // Finds the root of your app
-// const root = ReactDOM.createRoot(document.getElementsByClassName('app-container')[0]);
+const root = _reactDomDefault.default.createRoot(document.getElementsByClassName('app-container')[0]);
 // Tells React to render your app in the root DOM element
-// root.render(
-//   <React.StrictMode>
-//     <MyFlixApplication/>
-//   </React.StrictMode>
-// );
-// Find the root of our app
-const container = document.getElementsByClassName('app-container')[0];
-// Tell React to render our app in the root DOM element
-_reactDomDefault.default.render(/*#__PURE__*/ _reactDefault.default.createElement(MyFlixApplication), container);
+root.render(/*#__PURE__*/ _jsxRuntime.jsx(MyFlixApplication, {
+    __source: {
+        fileName: "src/index.jsx",
+        lineNumber: 34
+    },
+    __self: undefined
+})); // Find the root of our app
+ // const container = document.getElementsByClassName('app-container')[0];
+ // Tell React to render our app in the root DOM element
+ // ReactDOM.render(React.createElement(MyFlixApplication), container);
 
   $parcel$ReactRefreshHelpers$b058.postlude(module);
 } finally {
