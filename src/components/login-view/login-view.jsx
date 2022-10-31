@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import {Form , Button, Container, Row, Col, Card} from 'react-bootstrap';
 import axios from 'axios';
-
+import { connect} from 'react-redux';
 
 export function LoginView(props) {
   const [name, setUsername] = useState('');
@@ -90,3 +90,9 @@ LoginView.Prototype = {
   }),
   onLoggedIn: PropTypes.func.isRequired
 };
+
+// const mapDispatchToProps = (dispatch) => ({
+//   handleSubmit: (event) => dispatch(handleSubmit(event))
+// });
+
+// export default connect(null, mapDispatchToProps)(LoginView);

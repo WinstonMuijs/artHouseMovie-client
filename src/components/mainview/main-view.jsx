@@ -86,7 +86,7 @@ class MainView extends React.Component {
 
     return (
       <Router>
-      <Navbar user={user}/>
+      <Navbar user={user} />
         <Row className="main-view justify-content-md-center">
           
           <Route exact path="/" render={() => {
@@ -153,7 +153,7 @@ class MainView extends React.Component {
 
             if(!movies) return <div className="main-view"/>;
 
-            return <GenreView genre={movies.find(m => m.genre.name === match.params.name)} onBackClick={() => history.goBack()}/>
+            return <GenreView genre={movies.find(m => m.genre.name === match.params.name).genre} onBackClick={() => history.goBack()}/>
           }}/>
 
 
