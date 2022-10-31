@@ -26,6 +26,7 @@ export function Navbar({ user }) {
   return (
     <>
     <Navbar
+      key={user}
       className="main-nav" 
       expand="lg" 
       bg="dark" 
